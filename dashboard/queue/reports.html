@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Invoiz Reports and Analytics Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#3c83f6",
+                        "background-light": "#f5f7f8",
+                        "background-dark": "#101722",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.5rem", "lg": "1rem", "xl": "1.5rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        .sidebar-active { background-color: rgba(60, 131, 246, 0.1); border-right: 3px solid #3c83f6; color: #3c83f6; }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100">
+<div class="flex min-h-screen">
+<!-- Sidebar -->
+<aside class="w-[240px] bg-[#0F172A] text-slate-300 flex flex-col fixed h-full z-20">
+<div class="p-6 flex items-center gap-3">
+<div class="size-10 bg-primary rounded-lg flex items-center justify-center text-white">
+<span class="material-symbols-outlined">receipt_long</span>
+</div>
+<div>
+<h1 class="text-white text-lg font-bold leading-none">Invoiz</h1>
+<p class="text-slate-400 text-xs mt-1">Enterprise E-Invoice</p>
+</div>
+</div>
+<nav class="flex-1 px-4 py-4 space-y-1">
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg hover:bg-slate-800 transition-colors" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="text-sm font-medium">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg hover:bg-slate-800 transition-colors" href="#">
+<span class="material-symbols-outlined">description</span>
+<span class="text-sm font-medium">Invoices</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg hover:bg-slate-800 transition-colors" href="#">
+<span class="material-symbols-outlined">group</span>
+<span class="text-sm font-medium">Customers</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg bg-primary/10 text-primary" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">analytics</span>
+<span class="text-sm font-medium">Reports</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg hover:bg-slate-800 transition-colors" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="text-sm font-medium">Settings</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg hover:bg-slate-800 transition-colors" href="#">
+<span class="material-symbols-outlined">help</span>
+<span class="text-sm font-medium">Help Center</span>
+</a>
+</nav>
+<div class="p-4 border-t border-slate-800">
+<button class="w-full bg-primary hover:bg-primary/90 text-white font-bold py-2.5 rounded-xl flex items-center justify-center gap-2 mb-4 transition-all">
+<span class="material-symbols-outlined text-sm">add</span>
+<span>New Invoice</span>
+</button>
+<button class="flex items-center gap-3 px-3 py-2 w-full text-slate-400 hover:text-white transition-colors">
+<span class="material-symbols-outlined">logout</span>
+<span class="text-sm font-medium">Logout</span>
+</button>
+</div>
+</aside>
+<!-- Main Content -->
+<main class="flex-1 ml-[240px]">
+<!-- Header -->
+<header class="h-16 bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800 flex items-center justify-between px-8 sticky top-0 z-10">
+<div class="flex items-center gap-4">
+<h2 class="text-xl font-bold text-slate-900 dark:text-white">Reports</h2>
+</div>
+<div class="flex items-center gap-4">
+<div class="relative group">
+<button class="flex items-center gap-2 px-4 py-2 border border-slate-200 dark:border-slate-700 rounded-lg text-sm font-medium bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-200">
+<span class="material-symbols-outlined text-lg">calendar_today</span>
+<span>Last 30 days</span>
+<span class="material-symbols-outlined text-lg">expand_more</span>
+</button>
+</div>
+<button class="flex items-center gap-2 px-4 py-2 bg-primary text-white rounded-lg text-sm font-bold hover:bg-primary/90 transition-all">
+<span class="material-symbols-outlined text-lg">picture_as_pdf</span>
+<span>Export PDF</span>
+</button>
+<div class="h-8 w-px bg-slate-200 dark:bg-slate-700 mx-2"></div>
+<div class="size-10 rounded-full bg-slate-200 dark:bg-slate-700 overflow-hidden border-2 border-primary/20">
+<img class="w-full h-full object-cover" data-alt="User profile avatar of a businessman" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAJQzBlscKdMsXY3lLpl-S7FrJVSKO5cgGAMG81aXB2RJ-swXlec8SrhKhuBQn6QxmX6iMLXvCLCRlaZXH8PDlFgkF-e_0zt1DfR4JvhlRfg3RM2b5HKQWTWpUc_RWdy6GDmKyZsA8F0kOHVUBd-3vHDz_Ri7H3XJvFfYsFLguihDS_vHFwfLEzRNrO2jTMtiL5A2ar2debsC0tJKdMtbw89y5JhhlbKR-U9Y21n9NkDBSN4fDS6G3qZNlFEwavL5EnvCB_g_vMt7c"/>
+</div>
+</div>
+</header>
+<div class="p-8 space-y-8 max-w-[1400px] mx-auto">
+<!-- KPI Row -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<div class="bg-white dark:bg-slate-900 p-6 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm">
+<div class="flex justify-between items-start">
+<p class="text-slate-500 dark:text-slate-400 text-sm font-medium uppercase tracking-wider">Total Revenue</p>
+<span class="p-2 bg-emerald-50 dark:bg-emerald-900/20 text-emerald-600 dark:text-emerald-400 rounded-lg material-symbols-outlined">payments</span>
+</div>
+<div class="mt-4 flex items-baseline gap-2">
+<h3 class="text-3xl font-bold text-slate-900 dark:text-white">RM 145,230</h3>
+<span class="text-emerald-600 text-sm font-bold flex items-center"><span class="material-symbols-outlined text-xs">arrow_upward</span> 12.5%</span>
+</div>
+</div>
+<div class="bg-white dark:bg-slate-900 p-6 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm">
+<div class="flex justify-between items-start">
+<p class="text-slate-500 dark:text-slate-400 text-sm font-medium uppercase tracking-wider">Invoices Issued</p>
+<span class="p-2 bg-blue-50 dark:bg-blue-900/20 text-blue-600 dark:text-blue-400 rounded-lg material-symbols-outlined">description</span>
+</div>
+<div class="mt-4 flex items-baseline gap-2">
+<h3 class="text-3xl font-bold text-slate-900 dark:text-white">89</h3>
+<span class="text-rose-600 text-sm font-bold flex items-center"><span class="material-symbols-outlined text-xs">arrow_downward</span> 2.1%</span>
+</div>
+</div>
+<div class="bg-white dark:bg-slate-900 p-6 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm">
+<div class="flex justify-between items-start">
+<p class="text-slate-500 dark:text-slate-400 text-sm font-medium uppercase tracking-wider">Collection Rate</p>
+<span class="p-2 bg-amber-50 dark:bg-amber-900/20 text-amber-600 dark:text-amber-400 rounded-lg material-symbols-outlined">check_circle</span>
+</div>
+<div class="mt-4 flex items-baseline gap-2">
+<h3 class="text-3xl font-bold text-slate-900 dark:text-white">87%</h3>
+<span class="text-emerald-600 text-sm font-bold flex items-center"><span class="material-symbols-outlined text-xs">arrow_upward</span> 4.3%</span>
+</div>
+</div>
+</div>
+<!-- Revenue Trend Card -->
+<div class="bg-white dark:bg-slate-900 p-8 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm">
+<div class="flex items-center justify-between mb-8">
+<div>
+<h4 class="text-lg font-bold text-slate-900 dark:text-white">Revenue Trend</h4>
+<p class="text-sm text-slate-500 dark:text-slate-400">Monthly revenue performance for the current year</p>
+</div>
+<div class="text-right">
+<p class="text-2xl font-bold text-slate-900 dark:text-white">RM 1.2M</p>
+<p class="text-xs text-emerald-600 font-bold uppercase tracking-widest">+15.2% vs prev. year</p>
+</div>
+</div>
+<div class="h-64 w-full relative">
+<svg class="w-full h-full preserve-3d" viewbox="0 0 1000 200">
+<defs>
+<lineargradient id="areaGradient" x1="0" x2="0" y1="0" y2="1">
+<stop offset="0%" stop-color="#3c83f6" stop-opacity="0.3"></stop>
+<stop offset="100%" stop-color="#3c83f6" stop-opacity="0"></stop>
+</lineargradient>
+</defs>
+<path d="M0,180 Q100,160 200,170 T400,120 T600,80 T800,100 T1000,40 V200 H0 Z" fill="url(#areaGradient)"></path>
+<path d="M0,180 Q100,160 200,170 T400,120 T600,80 T800,100 T1000,40" fill="none" stroke="#3c83f6" stroke-linecap="round" stroke-width="4"></path>
+</svg>
+<div class="flex justify-between mt-4 px-2">
+<span class="text-xs font-medium text-slate-400">Jan</span>
+<span class="text-xs font-medium text-slate-400">Feb</span>
+<span class="text-xs font-medium text-slate-400">Mar</span>
+<span class="text-xs font-medium text-slate-400">Apr</span>
+<span class="text-xs font-medium text-slate-400">May</span>
+<span class="text-xs font-medium text-slate-400">Jun</span>
+<span class="text-xs font-medium text-slate-400">Jul</span>
+<span class="text-xs font-medium text-slate-400">Aug</span>
+<span class="text-xs font-medium text-slate-400">Sep</span>
+<span class="text-xs font-medium text-slate-400">Oct</span>
+<span class="text-xs font-medium text-slate-400">Nov</span>
+<span class="text-xs font-medium text-slate-400">Dec</span>
+</div>
+</div>
+</div>
+<!-- 2 Column Charts -->
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+<!-- Invoice Aging Analysis -->
+<div class="bg-white dark:bg-slate-900 p-8 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm">
+<div class="mb-8">
+<h4 class="text-lg font-bold text-slate-900 dark:text-white">Invoice Aging Analysis</h4>
+<p class="text-sm text-slate-500 dark:text-slate-400">Outstanding amounts by duration</p>
+</div>
+<div class="flex items-end justify-between gap-4 h-56 px-4">
+<div class="flex-1 flex flex-col items-center gap-2">
+<div class="w-full bg-emerald-500 rounded-t-lg" style="height: 40%"></div>
+<span class="text-xs font-bold text-slate-500">0-30d</span>
+<span class="text-[10px] font-medium text-slate-400">RM 18k</span>
+</div>
+<div class="flex-1 flex flex-col items-center gap-2">
+<div class="w-full bg-amber-500 rounded-t-lg" style="height: 70%"></div>
+<span class="text-xs font-bold text-slate-500">31-60d</span>
+<span class="text-[10px] font-medium text-slate-400">RM 32k</span>
+</div>
+<div class="flex-1 flex flex-col items-center gap-2">
+<div class="w-full bg-orange-500 rounded-t-lg" style="height: 55%"></div>
+<span class="text-xs font-bold text-slate-500">61-90d</span>
+<span class="text-[10px] font-medium text-slate-400">RM 25k</span>
+</div>
+<div class="flex-1 flex flex-col items-center gap-2">
+<div class="w-full bg-rose-500 rounded-t-lg" style="height: 30%"></div>
+<span class="text-xs font-bold text-slate-500">90+d</span>
+<span class="text-[10px] font-medium text-slate-400">RM 14k</span>
+</div>
+</div>
+</div>
+<!-- LHDN Submission Status -->
+<div class="bg-white dark:bg-slate-900 p-8 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm">
+<div class="mb-8">
+<h4 class="text-lg font-bold text-slate-900 dark:text-white">LHDN Submission Status</h4>
+<p class="text-sm text-slate-500 dark:text-slate-400">Real-time LHDN API validation status</p>
+</div>
+<div class="flex items-center justify-around h-56">
+<div class="relative size-44">
+<svg class="size-full -rotate-90" viewbox="0 0 36 36">
+<circle class="stroke-slate-100 dark:stroke-slate-800" cx="18" cy="18" fill="none" r="16" stroke-width="3"></circle>
+<circle class="stroke-emerald-500" cx="18" cy="18" fill="none" r="16" stroke-dasharray="98.8, 100" stroke-width="3"></circle>
+<circle class="stroke-rose-500" cx="18" cy="18" fill="none" r="16" stroke-dasharray="0.6, 100" stroke-dashoffset="-98.8" stroke-width="3"></circle>
+<circle class="stroke-amber-500" cx="18" cy="18" fill="none" r="16" stroke-dasharray="0.6, 100" stroke-dashoffset="-99.4" stroke-width="3"></circle>
+</svg>
+<div class="absolute inset-0 flex flex-col items-center justify-center">
+<span class="text-3xl font-bold text-slate-900 dark:text-white">98.8%</span>
+<span class="text-[10px] font-bold text-slate-500 uppercase tracking-widest">Valid</span>
+</div>
+</div>
+<div class="space-y-3">
+<div class="flex items-center gap-2">
+<div class="size-3 bg-emerald-500 rounded-full"></div>
+<span class="text-xs font-medium text-slate-600 dark:text-slate-300">Valid (98.8%)</span>
+</div>
+<div class="flex items-center gap-2">
+<div class="size-3 bg-rose-500 rounded-full"></div>
+<span class="text-xs font-medium text-slate-600 dark:text-slate-300">Invalid (0.6%)</span>
+</div>
+<div class="flex items-center gap-2">
+<div class="size-3 bg-amber-500 rounded-full"></div>
+<span class="text-xs font-medium text-slate-600 dark:text-slate-300">Pending (0.6%)</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Invoice by Status Grouped Chart -->
+<div class="bg-white dark:bg-slate-900 p-8 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm">
+<div class="flex items-center justify-between mb-8">
+<div>
+<h4 class="text-lg font-bold text-slate-900 dark:text-white">Invoice by Status</h4>
+<p class="text-sm text-slate-500 dark:text-slate-400">Monthly breakdown of invoice states</p>
+</div>
+<div class="flex gap-4">
+<div class="flex items-center gap-1.5"><div class="size-2.5 bg-emerald-500 rounded-full"></div><span class="text-[10px] font-bold text-slate-500 uppercase">Paid</span></div>
+<div class="flex items-center gap-1.5"><div class="size-2.5 bg-blue-500 rounded-full"></div><span class="text-[10px] font-bold text-slate-500 uppercase">Sent</span></div>
+<div class="flex items-center gap-1.5"><div class="size-2.5 bg-rose-500 rounded-full"></div><span class="text-[10px] font-bold text-slate-500 uppercase">Overdue</span></div>
+<div class="flex items-center gap-1.5"><div class="size-2.5 bg-slate-300 rounded-full"></div><span class="text-[10px] font-bold text-slate-500 uppercase">Draft</span></div>
+</div>
+</div>
+<div class="flex items-end justify-between h-48 gap-8 px-4">
+<!-- Grouped bars for 6 months -->
+<div class="flex-1 flex items-end gap-1">
+<div class="flex-1 bg-emerald-500 rounded-t-sm" style="height: 80%"></div>
+<div class="flex-1 bg-blue-500 rounded-t-sm" style="height: 60%"></div>
+<div class="flex-1 bg-rose-500 rounded-t-sm" style="height: 15%"></div>
+<div class="flex-1 bg-slate-200 rounded-t-sm" style="height: 10%"></div>
+</div>
+<div class="flex-1 flex items-end gap-1">
+<div class="flex-1 bg-emerald-500 rounded-t-sm" style="height: 70%"></div>
+<div class="flex-1 bg-blue-500 rounded-t-sm" style="height: 55%"></div>
+<div class="flex-1 bg-rose-500 rounded-t-sm" style="height: 20%"></div>
+<div class="flex-1 bg-slate-200 rounded-t-sm" style="height: 15%"></div>
+</div>
+<div class="flex-1 flex items-end gap-1">
+<div class="flex-1 bg-emerald-500 rounded-t-sm" style="height: 90%"></div>
+<div class="flex-1 bg-blue-500 rounded-t-sm" style="height: 40%"></div>
+<div class="flex-1 bg-rose-500 rounded-t-sm" style="height: 10%"></div>
+<div class="flex-1 bg-slate-200 rounded-t-sm" style="height: 5%"></div>
+</div>
+<div class="flex-1 flex items-end gap-1">
+<div class="flex-1 bg-emerald-500 rounded-t-sm" style="height: 65%"></div>
+<div class="flex-1 bg-blue-500 rounded-t-sm" style="height: 75%"></div>
+<div class="flex-1 bg-rose-500 rounded-t-sm" style="height: 25%"></div>
+<div class="flex-1 bg-slate-200 rounded-t-sm" style="height: 12%"></div>
+</div>
+<div class="flex-1 flex items-end gap-1">
+<div class="flex-1 bg-emerald-500 rounded-t-sm" style="height: 85%"></div>
+<div class="flex-1 bg-blue-500 rounded-t-sm" style="height: 50%"></div>
+<div class="flex-1 bg-rose-500 rounded-t-sm" style="height: 18%"></div>
+<div class="flex-1 bg-slate-200 rounded-t-sm" style="height: 8%"></div>
+</div>
+<div class="flex-1 flex items-end gap-1">
+<div class="flex-1 bg-emerald-500 rounded-t-sm" style="height: 75%"></div>
+<div class="flex-1 bg-blue-500 rounded-t-sm" style="height: 65%"></div>
+<div class="flex-1 bg-rose-500 rounded-t-sm" style="height: 30%"></div>
+<div class="flex-1 bg-slate-200 rounded-t-sm" style="height: 10%"></div>
+</div>
+</div>
+<div class="flex justify-between mt-4 px-4">
+<span class="text-xs font-medium text-slate-400">Jan</span>
+<span class="text-xs font-medium text-slate-400">Feb</span>
+<span class="text-xs font-medium text-slate-400">Mar</span>
+<span class="text-xs font-medium text-slate-400">Apr</span>
+<span class="text-xs font-medium text-slate-400">May</span>
+<span class="text-xs font-medium text-slate-400">Jun</span>
+</div>
+</div>
+<!-- Top Customers Table -->
+<div class="bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm overflow-hidden">
+<div class="p-6 border-b border-slate-200 dark:border-slate-800">
+<h4 class="text-lg font-bold text-slate-900 dark:text-white">Top Customers</h4>
+<p class="text-sm text-slate-500 dark:text-slate-400">Highest value clients by total invoiced amount</p>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left">
+<thead class="bg-slate-50 dark:bg-slate-800/50">
+<tr>
+<th class="px-6 py-4 text-xs font-bold text-slate-500 uppercase tracking-wider">Customer Name</th>
+<th class="px-6 py-4 text-xs font-bold text-slate-500 uppercase tracking-wider">Total Invoiced</th>
+<th class="px-6 py-4 text-xs font-bold text-slate-500 uppercase tracking-wider">Total Paid</th>
+<th class="px-6 py-4 text-xs font-bold text-slate-500 uppercase tracking-wider">Outstanding</th>
+<th class="px-6 py-4 text-xs font-bold text-slate-500 uppercase tracking-wider">Status</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-slate-200 dark:divide-slate-800">
+<tr class="hover:bg-slate-50 dark:hover:bg-slate-800/30 transition-colors">
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="size-8 bg-primary/10 text-primary rounded-full flex items-center justify-center font-bold text-xs">TN</div>
+<span class="text-sm font-semibold text-slate-900 dark:text-white">Tenaga Nasional Berhad</span>
+</div>
+</td>
+<td class="px-6 py-4 text-sm font-medium">RM 45,200.00</td>
+<td class="px-6 py-4 text-sm font-medium text-emerald-600">RM 45,200.00</td>
+<td class="px-6 py-4 text-sm font-medium text-slate-400">RM 0.00</td>
+<td class="px-6 py-4">
+<span class="px-2.5 py-1 bg-emerald-100 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-400 text-[10px] font-bold rounded-full uppercase">VIP</span>
+</td>
+</tr>
+<tr class="hover:bg-slate-50 dark:hover:bg-slate-800/30 transition-colors">
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="size-8 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center font-bold text-xs">MX</div>
+<span class="text-sm font-semibold text-slate-900 dark:text-white">Maxis Broadband Sdn Bhd</span>
+</div>
+</td>
+<td class="px-6 py-4 text-sm font-medium">RM 32,150.00</td>
+<td class="px-6 py-4 text-sm font-medium text-emerald-600">RM 30,000.00</td>
+<td class="px-6 py-4 text-sm font-medium text-rose-600">RM 2,150.00</td>
+<td class="px-6 py-4">
+<span class="px-2.5 py-1 bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-400 text-[10px] font-bold rounded-full uppercase">Enterprise</span>
+</td>
+</tr>
+<tr class="hover:bg-slate-50 dark:hover:bg-slate-800/30 transition-colors">
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="size-8 bg-amber-100 text-amber-600 rounded-full flex items-center justify-center font-bold text-xs">PT</div>
+<span class="text-sm font-semibold text-slate-900 dark:text-white">Petronas Dagangan</span>
+</div>
+</td>
+<td class="px-6 py-4 text-sm font-medium">RM 28,900.00</td>
+<td class="px-6 py-4 text-sm font-medium text-emerald-600">RM 28,900.00</td>
+<td class="px-6 py-4 text-sm font-medium text-slate-400">RM 0.00</td>
+<td class="px-6 py-4">
+<span class="px-2.5 py-1 bg-emerald-100 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-400 text-[10px] font-bold rounded-full uppercase">VIP</span>
+</td>
+</tr>
+<tr class="hover:bg-slate-50 dark:hover:bg-slate-800/30 transition-colors">
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="size-8 bg-purple-100 text-purple-600 rounded-full flex items-center justify-center font-bold text-xs">MA</div>
+<span class="text-sm font-semibold text-slate-900 dark:text-white">Maybank Group</span>
+</div>
+</td>
+<td class="px-6 py-4 text-sm font-medium">RM 21,450.00</td>
+<td class="px-6 py-4 text-sm font-medium text-emerald-600">RM 15,000.00</td>
+<td class="px-6 py-4 text-sm font-medium text-rose-600">RM 6,450.00</td>
+<td class="px-6 py-4">
+<span class="px-2.5 py-1 bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-400 text-[10px] font-bold rounded-full uppercase">Enterprise</span>
+</td>
+</tr>
+<tr class="hover:bg-slate-50 dark:hover:bg-slate-800/30 transition-colors">
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="size-8 bg-rose-100 text-rose-600 rounded-full flex items-center justify-center font-bold text-xs">AX</div>
+<span class="text-sm font-semibold text-slate-900 dark:text-white">Axiata Digital</span>
+</div>
+</td>
+<td class="px-6 py-4 text-sm font-medium">RM 19,800.00</td>
+<td class="px-6 py-4 text-sm font-medium text-emerald-600">RM 19,800.00</td>
+<td class="px-6 py-4 text-sm font-medium text-slate-400">RM 0.00</td>
+<td class="px-6 py-4">
+<span class="px-2.5 py-1 bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 text-[10px] font-bold rounded-full uppercase">SME</span>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</main>
+</div>
+</body></html>

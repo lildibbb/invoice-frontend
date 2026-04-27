@@ -1,0 +1,94 @@
+---
+import { SEO } from 'astro-seo';
+import '../styles/global.css';
+
+interface Props {
+  title: string;
+  description?: string;
+  ogImage?: string;
+  canonicalUrl?: string;
+}
+
+const {
+  title,
+  description = 'Enterprise e-invoicing for Malaysian businesses. LHDN MyInvois compliant. Create, submit, and track invoices — all in one platform.',
+  ogImage = '/og-image.png',
+  canonicalUrl,
+} = Astro.props;
+
+const siteUrl = 'https://invoiz.my';
+const fullCanonical = canonicalUrl ? `${siteUrl}${canonicalUrl}` : Astro.url.href;
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'SoftwareApplication',
+      name: 'Invoiz',
+      applicationCategory: 'BusinessApplication',
+      operatingSystem: 'Web',
+      description,
+      url: siteUrl,
+      offers: {
+        '@type': 'Offer',
+        price: '49',
+        priceCurrency: 'MYR',
+        priceValidUntil: '2027-12-31',
+      },
+      aggregateRating: {
+        '@type': 'AggregateRating',
+        ratingValue: '4.9',
+        ratingCount: '127',
+      },
+    },
+    {
+      '@type': 'Organization',
+      name: 'Invoiz',
+      url: siteUrl,
+      logo: `${siteUrl}/logo.png`,
+      sameAs: [],
+      address: {
+        '@type': 'PostalAddress',
+        addressCountry: 'MY',
+      },
+    },
+  ],
+};
+---
+<!doctype html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="canonical" href={fullCanonical} />
+    <meta name="theme-color" content="#FFFFFF" />
+    <SEO
+      title={title}
+      description={description}
+      openGraph={{
+        basic: {
+          title,
+          type: 'website',
+          image: `${siteUrl}${ogImage}`,
+          url: fullCanonical,
+        },
+        optional: {
+          description,
+          locale: 'en_MY',
+          siteName: 'Invoiz',
+        },
+      }}
+      twitter={{
+        card: 'summary_large_image',
+        title,
+        description,
+        image: `${siteUrl}${ogImage}`,
+      }}
+    />
+    <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+  </head>
+  <body class="bg-white text-ink antialiased overflow-x-hidden">
+    <slot />
+  </body>
+</html>

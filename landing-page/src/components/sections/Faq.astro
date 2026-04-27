@@ -1,0 +1,78 @@
+---
+const faqs = [
+  {
+    q: 'Apa tu LHDN e-Invoicing?',
+    a: 'LHDN e-Invoicing is Malaysia\'s mandatory electronic invoicing system. Semua businesses kena generate, submit, and store invoices digitally through the MyInvois platform. Invoiz handles all of this automatically.',
+  },
+  {
+    q: 'Invoiz fully compliant ke?',
+    a: 'Yes. Fully compliant — UBL 2.1 format, digital signatures, QR code embedding, and 7-year audit trail retention. Semua as required by Malaysian tax law.',
+  },
+  {
+    q: 'Macam mana LHDN submission works?',
+    a: 'Create invoice in Invoiz, it auto-validates against LHDN requirements. One click submit to MyInvois API. You can track status real-time sampai LHDN accept. Biasanya dalam few seconds je.',
+  },
+  {
+    q: 'Boleh manage multiple companies?',
+    a: 'Boleh. Invoiz supports multi-tenant — manage multiple companies under one account. Each company has its own invoices, customers, and LHDN credentials with role-based access control.',
+  },
+  {
+    q: 'Kalau LHDN reject invoice?',
+    a: 'Invoiz display the specific rejection reason dari LHDN. You can fix and resubmit terus from the platform. Our validation engine catches most errors sebelum submission to minimize rejections.',
+  },
+  {
+    q: 'Macam mana nak join?',
+    a: 'Invoiz currently invite-only. Fill out the waitlist form kat bawah — we\'ll review and reach out to onboard you personally. Biasanya within 48 hours.',
+  },
+  {
+    q: 'Data secure ke?',
+    a: 'All data encrypted at rest and in transit — AES-256 and TLS 1.3. Regular security audits, data stored in secure Malaysian data centers. Your data stays in Malaysia.',
+  },
+  {
+    q: 'Payment methods apa accepted?',
+    a: 'FPX (online banking), credit cards (Visa, Mastercard), and bank transfer. All payments processed securely through our Malaysian payment partners.',
+  },
+];
+---
+<section id="faq" class="py-32 lg:py-40 px-4 bg-surface" aria-label="FAQ">
+  <div class="max-w-2xl mx-auto">
+    <div class="text-center mb-16">
+      <h2 class="faq-head font-display text-3xl sm:text-4xl lg:text-[52px] font-bold text-ink leading-tight tracking-[-0.03em]">
+        Soalan lazim.
+      </h2>
+    </div>
+
+    <div class="space-y-0">
+      {faqs.map((faq) => (
+        <details class="faq-item group border-b border-border">
+          <summary class="py-5 flex items-center justify-between cursor-pointer text-base font-semibold text-ink list-none select-none">
+            {faq.q}
+            <span class="w-6 h-6 flex items-center justify-center flex-shrink-0 ml-4 text-ink-muted text-sm font-mono">
+              <span class="group-open:hidden">+</span>
+              <span class="hidden group-open:inline">&minus;</span>
+            </span>
+          </summary>
+          <div class="pb-5 text-base text-ink-light leading-relaxed">
+            {faq.a}
+          </div>
+        </details>
+      ))}
+    </div>
+  </div>
+</section>
+
+<script>
+  import gsap from 'gsap';
+  import { ScrollTrigger } from 'gsap/ScrollTrigger';
+  gsap.registerPlugin(ScrollTrigger);
+
+  gsap.from('.faq-head', {
+    opacity: 0, y: 20, stagger: 0.1, duration: 0.5, ease: 'power3.out',
+    scrollTrigger: { trigger: '.faq-head', start: 'top 85%', once: true },
+  });
+
+  gsap.from('.faq-item', {
+    opacity: 0, y: 15, stagger: 0.05, duration: 0.4, ease: 'power3.out',
+    scrollTrigger: { trigger: '.faq-item', start: 'top 88%', once: true },
+  });
+</script>

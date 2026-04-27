@@ -1,0 +1,151 @@
+---
+import { Icon } from 'astro-icon/components';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/layout/Header.astro';
+
+const featuredPost = {
+  category: 'LHDN Compliance',
+  title: "Understanding Malaysia's E-Invoice Mandate: A Complete Guide for 2025",
+  excerpt: 'Everything Malaysian businesses need to know about the LHDN e-invoice requirement — timelines, technical specs, and how to get compliant before the deadline.',
+  author: 'Ahmad Razif',
+  readTime: '15 min read',
+  date: 'Feb 28, 2025',
+};
+
+const articles = [
+  {
+    category: 'Compliance',
+    title: '5 Common E-Invoice Mistakes Malaysian Businesses Make',
+    excerpt: 'Avoid these pitfalls when transitioning to LHDN e-invoicing and save your team hours of rework.',
+    author: 'Sarah Lim',
+    date: 'Feb 20, 2025',
+    gradient: 'from-rose-400 to-orange-300',
+  },
+  {
+    category: 'Productivity',
+    title: 'How to Optimize Your Invoice Workflow for Tax Season',
+    excerpt: 'Streamline your invoicing process with automation, templates, and smart categorization before tax season hits.',
+    author: 'Farhan Ibrahim',
+    date: 'Feb 14, 2025',
+    gradient: 'from-cyan-400 to-blue-400',
+  },
+  {
+    category: 'Engineering',
+    title: 'Multi-Tenant Architecture: Why It Matters for Your Business',
+    excerpt: 'How multi-tenant design lets you manage multiple companies under one account securely and efficiently.',
+    author: 'Sarah Lim',
+    date: 'Feb 7, 2025',
+    gradient: 'from-violet-400 to-purple-400',
+  },
+  {
+    category: 'Technical',
+    title: 'LHDN MyInvois API: Technical Deep Dive',
+    excerpt: 'A developer-focused walkthrough of the MyInvois API — authentication, submission, and status polling.',
+    author: 'Ahmad Razif',
+    date: 'Jan 30, 2025',
+    gradient: 'from-emerald-400 to-teal-400',
+  },
+  {
+    category: 'Finance',
+    title: 'Cash Flow Management Tips for Malaysian SMEs',
+    excerpt: 'Practical strategies for managing cash flow, reducing late payments, and improving your financial health.',
+    author: 'Mei Ling',
+    date: 'Jan 22, 2025',
+    gradient: 'from-amber-400 to-yellow-300',
+  },
+  {
+    category: 'Industry',
+    title: 'Digital Transformation in Malaysian Finance',
+    excerpt: 'How digitalization is reshaping finance operations for Malaysian businesses — and what to expect next.',
+    author: 'Farhan Ibrahim',
+    date: 'Jan 15, 2025',
+    gradient: 'from-pink-400 to-rose-400',
+  },
+];
+---
+<BaseLayout title="Blog — Invoiz">
+  <Header />
+  <main>
+    <!-- Mini Hero -->
+    <section class="bg-abyss pt-32 pb-16 px-4 text-center">
+      <h1 class="font-display text-4xl sm:text-5xl font-bold text-white">Blog</h1>
+      <p class="mt-4 text-lg text-slate-400">Insights on e-invoicing, compliance, and business growth</p>
+    </section>
+
+    <!-- Featured Post -->
+    <section class="py-16 px-4 bg-white">
+      <div class="max-w-6xl mx-auto">
+        <div class="bg-white rounded-2xl border border-slate-200 overflow-hidden">
+          <div class="grid grid-cols-1 md:grid-cols-2">
+            <div class="bg-gradient-to-br from-brand-500 to-violet-500 min-h-[300px] md:min-h-[400px] flex items-center justify-center">
+              <Icon name="ph:newspaper-duotone" class="w-24 h-24 text-white/30" />
+            </div>
+            <div class="p-8 md:p-10 flex flex-col justify-center">
+              <span class="inline-block w-fit text-xs font-semibold bg-violet-100 text-violet-700 px-3 py-1 rounded-full mb-4">{featuredPost.category}</span>
+              <h2 class="font-display text-2xl font-bold text-slate-900 leading-snug">{featuredPost.title}</h2>
+              <p class="mt-3 text-slate-500 leading-relaxed line-clamp-2">{featuredPost.excerpt}</p>
+              <div class="mt-6 flex items-center gap-3 text-sm text-slate-400">
+                <span class="font-medium text-slate-700">{featuredPost.author}</span>
+                <span>&middot;</span>
+                <span>{featuredPost.readTime}</span>
+                <span>&middot;</span>
+                <span>{featuredPost.date}</span>
+              </div>
+              <a href="#" class="mt-6 inline-flex items-center gap-2 text-brand-600 font-semibold text-sm hover:text-brand-700 transition-colors">
+                Read More
+                <Icon name="ph:arrow-right-bold" class="w-4 h-4" />
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Article Grid -->
+    <section class="pb-16 px-4 bg-white">
+      <div class="max-w-6xl mx-auto">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {articles.map((article) => (
+            <a href="#" class="group bg-white rounded-2xl border border-slate-200 overflow-hidden hover:shadow-lg transition-shadow">
+              <div class={`h-48 bg-gradient-to-br ${article.gradient} flex items-center justify-center`}>
+                <Icon name="ph:article-duotone" class="w-12 h-12 text-white/30" />
+              </div>
+              <div class="p-6">
+                <span class="inline-block text-xs font-semibold bg-slate-100 text-slate-600 px-3 py-1 rounded-full mb-3">{article.category}</span>
+                <h3 class="font-semibold text-slate-900 leading-snug group-hover:text-brand-600 transition-colors">{article.title}</h3>
+                <p class="mt-2 text-sm text-slate-500 leading-relaxed line-clamp-2">{article.excerpt}</p>
+                <div class="mt-4 flex items-center gap-2 text-xs text-slate-400">
+                  <span class="font-medium text-slate-600">{article.author}</span>
+                  <span>&middot;</span>
+                  <span>{article.date}</span>
+                </div>
+              </div>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Newsletter -->
+    <section class="py-12 px-4 bg-abyss">
+      <div class="max-w-2xl mx-auto text-center">
+        <h2 class="font-display text-2xl font-bold text-white">Stay updated</h2>
+        <p class="mt-2 text-slate-400">Get the latest on e-invoicing, compliance, and product updates delivered to your inbox.</p>
+        <form class="mt-6 flex flex-col sm:flex-row gap-3 justify-center">
+          <input
+            type="email"
+            placeholder="you@company.com"
+            class="flex-1 max-w-sm px-4 py-3 rounded-xl bg-white/10 border border-slate-700 text-white placeholder:text-slate-500 focus:outline-none focus:border-brand-500 transition-colors"
+          />
+          <button type="submit" class="bg-gradient-brand text-white px-6 py-3 rounded-xl font-semibold hover:shadow-lg hover:shadow-brand-500/25 transition-all">
+            Subscribe
+          </button>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="py-12 border-t border-gray-100 text-center text-gray-400 text-sm bg-white">
+    <p>&copy; 2026 Invoiz &middot; All rights reserved &middot; <a href="#" class="hover:text-blue-600 transition-colors">Privacy Policy</a> &middot; <a href="#" class="hover:text-blue-600 transition-colors">Terms</a></p>
+  </footer>
+</BaseLayout>

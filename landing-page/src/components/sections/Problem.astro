@@ -1,0 +1,58 @@
+---
+const problems = [
+  {
+    problem: 'Manual data entry for every single invoice',
+    solution: 'Auto-fill customer data, products, tax — seconds, not hours.',
+  },
+  {
+    problem: 'Submitting to LHDN is confusing and slow',
+    solution: 'One-click MyInvois submission, validated before it goes.',
+  },
+  {
+    problem: 'Chasing payments with awkward WhatsApp messages',
+    solution: 'Automated reminders, real-time payment tracking.',
+  },
+];
+---
+<section class="py-32 lg:py-40 px-4 bg-white" aria-label="The problem">
+  <div class="max-w-4xl mx-auto">
+    <div class="text-center mb-20">
+      <h2 class="problem-reveal font-display text-3xl sm:text-4xl lg:text-[52px] font-bold text-ink leading-tight tracking-[-0.03em]">
+        You're still doing invoices the hard way.
+      </h2>
+      <p class="problem-reveal mt-4 text-lg text-ink-light">
+        Manual work, missed deadlines, LHDN headaches.
+      </p>
+    </div>
+
+    <div class="space-y-0">
+      {problems.map((item, i) => (
+        <div class={`problem-row grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-12 py-8 ${i < problems.length - 1 ? 'border-b border-border' : ''}`}>
+          <div class="flex items-start gap-3">
+            <span class="text-ink-muted mt-0.5 flex-shrink-0">&mdash;</span>
+            <p class="text-lg lg:text-xl font-semibold text-ink leading-snug">{item.problem}</p>
+          </div>
+          <div>
+            <p class="text-base lg:text-lg text-ink-light leading-relaxed">{item.solution}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<script>
+  import gsap from 'gsap';
+  import { ScrollTrigger } from 'gsap/ScrollTrigger';
+  gsap.registerPlugin(ScrollTrigger);
+
+  gsap.from('.problem-reveal', {
+    opacity: 0, y: 25, stagger: 0.1, duration: 0.6, ease: 'power3.out',
+    scrollTrigger: { trigger: '.problem-reveal', start: 'top 85%', once: true },
+  });
+
+  gsap.from('.problem-row', {
+    opacity: 0, y: 20, stagger: 0.12, duration: 0.6, ease: 'power3.out',
+    scrollTrigger: { trigger: '.problem-row', start: 'top 88%', once: true },
+  });
+</script>

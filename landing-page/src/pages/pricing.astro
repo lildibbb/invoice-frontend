@@ -1,0 +1,182 @@
+---
+import { Icon } from 'astro-icon/components';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/layout/Header.astro';
+import Pricing from '../components/sections/Pricing.astro';
+
+const faqs = [
+  {
+    q: 'Can I switch plans later?',
+    a: 'Yes, you can upgrade or downgrade your plan at any time. Changes take effect on your next billing cycle.',
+  },
+  {
+    q: 'Is there a free trial?',
+    a: 'Every plan comes with a 14-day free trial. No credit card required to get started.',
+  },
+  {
+    q: 'What payment methods do you accept?',
+    a: 'We accept all major credit and debit cards, FPX online banking, and bank transfers for annual plans.',
+  },
+  {
+    q: 'What happens if I exceed my invoice limit?',
+    a: 'We will notify you when you reach 80% of your limit. You can upgrade your plan or purchase additional invoices as needed.',
+  },
+  {
+    q: 'Do you offer discounts for nonprofits or startups?',
+    a: 'Yes. Contact our sales team for special pricing for registered nonprofits and early-stage startups.',
+  },
+];
+
+const comparisonCategories = [
+  {
+    name: 'Invoicing',
+    features: [
+      { label: 'Monthly invoices', starter: '50', business: 'Unlimited', enterprise: 'Unlimited' },
+      { label: 'Recurring invoices', starter: false, business: true, enterprise: true },
+      { label: 'Quotation to invoice', starter: true, business: true, enterprise: true },
+      { label: 'CSV bulk upload', starter: false, business: true, enterprise: true },
+      { label: 'Credit & debit notes', starter: true, business: true, enterprise: true },
+    ],
+  },
+  {
+    name: 'LHDN Compliance',
+    features: [
+      { label: 'LHDN e-invoice submission', starter: true, business: true, enterprise: true },
+      { label: 'Real-time status tracking', starter: true, business: true, enterprise: true },
+      { label: '7-year audit log', starter: false, business: false, enterprise: true },
+      { label: 'PDF with QR code', starter: true, business: true, enterprise: true },
+    ],
+  },
+  {
+    name: 'Team & Access',
+    features: [
+      { label: 'Team members', starter: '2', business: '10', enterprise: 'Unlimited' },
+      { label: 'Multi-tenant (companies)', starter: '1', business: '3', enterprise: 'Unlimited' },
+      { label: 'Role-based access control', starter: false, business: true, enterprise: true },
+    ],
+  },
+  {
+    name: 'Support & Integrations',
+    features: [
+      { label: 'Email support', starter: true, business: true, enterprise: true },
+      { label: 'Priority support', starter: false, business: true, enterprise: true },
+      { label: 'Dedicated account manager', starter: false, business: false, enterprise: true },
+      { label: 'Custom integrations / API', starter: false, business: false, enterprise: true },
+      { label: 'SLA guarantee', starter: false, business: false, enterprise: true },
+    ],
+  },
+];
+---
+<BaseLayout title="Pricing — Invoiz">
+  <Header />
+  <main>
+    <!-- Mini Hero -->
+    <section class="bg-abyss pt-32 pb-20 px-4 text-center">
+      <h1 class="font-display text-4xl sm:text-5xl font-bold text-white">Simple, transparent pricing</h1>
+      <p class="mt-4 text-lg text-slate-400">No hidden fees. Cancel anytime.</p>
+    </section>
+
+    <!-- Pricing Cards -->
+    <Pricing />
+
+    <!-- Feature Comparison Table -->
+    <section class="py-16 px-4 bg-white">
+      <div class="max-w-5xl mx-auto">
+        <h2 class="font-display text-3xl font-bold text-slate-900 text-center mb-12">Compare plans in detail</h2>
+        <div class="overflow-x-auto">
+          <table class="w-full text-left text-sm">
+            <thead>
+              <tr class="border-b-2 border-slate-200">
+                <th class="py-4 pr-4 text-slate-500 font-medium w-2/5">Feature</th>
+                <th class="py-4 px-4 text-center font-semibold text-slate-900">Starter</th>
+                <th class="py-4 px-4 text-center font-semibold text-slate-900">Business</th>
+                <th class="py-4 px-4 text-center font-semibold text-slate-900">Enterprise</th>
+              </tr>
+            </thead>
+            <tbody>
+              {comparisonCategories.map((cat) => (
+                <>
+                  <tr>
+                    <td colspan="4" class="pt-8 pb-3 font-semibold text-slate-900 text-xs uppercase tracking-wider">
+                      {cat.name}
+                    </td>
+                  </tr>
+                  {cat.features.map((f) => (
+                    <tr class="border-b border-slate-100">
+                      <td class="py-3 pr-4 text-slate-700">{f.label}</td>
+                      <td class="py-3 px-4 text-center">
+                        {typeof f.starter === 'string' ? (
+                          <span class="text-slate-700 font-medium">{f.starter}</span>
+                        ) : f.starter ? (
+                          <Icon name="ph:check-circle-duotone" class="w-5 h-5 text-brand-500 inline-block" />
+                        ) : (
+                          <Icon name="ph:minus-bold" class="w-5 h-5 text-slate-300 inline-block" />
+                        )}
+                      </td>
+                      <td class="py-3 px-4 text-center">
+                        {typeof f.business === 'string' ? (
+                          <span class="text-slate-700 font-medium">{f.business}</span>
+                        ) : f.business ? (
+                          <Icon name="ph:check-circle-duotone" class="w-5 h-5 text-brand-500 inline-block" />
+                        ) : (
+                          <Icon name="ph:minus-bold" class="w-5 h-5 text-slate-300 inline-block" />
+                        )}
+                      </td>
+                      <td class="py-3 px-4 text-center">
+                        {typeof f.enterprise === 'string' ? (
+                          <span class="text-slate-700 font-medium">{f.enterprise}</span>
+                        ) : f.enterprise ? (
+                          <Icon name="ph:check-circle-duotone" class="w-5 h-5 text-brand-500 inline-block" />
+                        ) : (
+                          <Icon name="ph:minus-bold" class="w-5 h-5 text-slate-300 inline-block" />
+                        )}
+                      </td>
+                    </tr>
+                  ))}
+                </>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="py-16 px-4 bg-slate-50">
+      <div class="max-w-3xl mx-auto">
+        <h2 class="font-display text-3xl font-bold text-slate-900 text-center mb-12">Frequently asked questions</h2>
+        <div class="space-y-4">
+          {faqs.map((faq) => (
+            <details class="group bg-white rounded-xl border border-slate-200 p-6">
+              <summary class="flex items-center justify-between cursor-pointer font-semibold text-slate-900">
+                {faq.q}
+                <Icon name="ph:caret-down-bold" class="w-5 h-5 text-slate-400 group-open:rotate-180 transition-transform" />
+              </summary>
+              <p class="mt-4 text-slate-600 leading-relaxed">{faq.a}</p>
+            </details>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Enterprise CTA -->
+    <section class="py-20 px-4 bg-white">
+      <div class="max-w-3xl mx-auto text-center">
+        <h2 class="font-display text-3xl font-bold text-slate-900">Need a custom plan?</h2>
+        <p class="mt-4 text-lg text-slate-500">Get a tailored solution for your organization with dedicated support, custom integrations, and volume pricing.</p>
+        <div class="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
+          <a href="#" class="bg-gradient-brand text-white px-8 py-4 rounded-xl font-semibold text-lg shadow-lg shadow-brand-500/25 hover:shadow-brand-500/40 transition-all">
+            Contact Sales
+          </a>
+          <a href="#" class="border-2 border-slate-200 text-slate-700 px-8 py-4 rounded-xl font-semibold text-lg hover:border-brand-500 hover:text-brand-600 transition-colors">
+            Book a Demo
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="py-12 border-t border-gray-100 text-center text-gray-400 text-sm bg-white">
+    <p>&copy; 2026 Invoiz &middot; All rights reserved &middot; <a href="#" class="hover:text-blue-600 transition-colors">Privacy Policy</a> &middot; <a href="#" class="hover:text-blue-600 transition-colors">Terms</a></p>
+  </footer>
+</BaseLayout>

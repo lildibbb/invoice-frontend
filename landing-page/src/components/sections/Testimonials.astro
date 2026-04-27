@@ -1,0 +1,41 @@
+---
+---
+<section class="py-32 lg:py-40 px-4 bg-surface" aria-label="Testimonials">
+  <div class="max-w-4xl mx-auto text-center">
+    <!-- Giant quotation mark -->
+    <div class="testi-quote select-none" aria-hidden="true">
+      <span class="font-display text-[160px] lg:text-[200px] leading-none text-border font-bold">&ldquo;</span>
+    </div>
+
+    <blockquote class="testi-text -mt-16 lg:-mt-20">
+      <p class="text-xl lg:text-2xl text-ink leading-relaxed italic max-w-3xl mx-auto">
+        Dulu nak submit invoice to LHDN, pening kepala. Now dengan Invoiz, satu click je settle. Best part — client pun dapat QR code terus. Professional gila.
+      </p>
+    </blockquote>
+
+    <div class="testi-attr mt-8">
+      <p class="text-base text-ink font-semibold">&mdash; Ahmad Razif</p>
+      <p class="text-sm text-ink-light mt-1">Finance Manager, TechVentures Sdn Bhd</p>
+    </div>
+
+    <!-- Navigation dots for future carousel -->
+    <div class="flex items-center justify-center gap-2 mt-10" aria-label="Testimonial navigation">
+      <span class="w-2 h-2 rounded-full bg-accent"></span>
+      <span class="w-2 h-2 rounded-full bg-border"></span>
+      <span class="w-2 h-2 rounded-full bg-border"></span>
+    </div>
+  </div>
+</section>
+
+<script>
+  import gsap from 'gsap';
+  import { ScrollTrigger } from 'gsap/ScrollTrigger';
+  gsap.registerPlugin(ScrollTrigger);
+
+  const tl = gsap.timeline({
+    scrollTrigger: { trigger: '.testi-quote', start: 'top 82%', once: true },
+  });
+  tl.from('.testi-quote', { opacity: 0, scale: 0.9, duration: 0.6, ease: 'power3.out' })
+    .from('.testi-text', { opacity: 0, y: 20, duration: 0.6, ease: 'power3.out' }, '-=0.3')
+    .from('.testi-attr', { opacity: 0, duration: 0.4 }, '-=0.2');
+</script>

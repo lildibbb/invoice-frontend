@@ -1,0 +1,41 @@
+
+> dashboard@0.0.0 build D:\Project\invoice-frontend\dashboard
+> ng build
+
+[33m>[39m Building...
+[32mΓêÜ[39m Building...
+Application bundle generation failed. [3.220 seconds]
+
+Γû▓ [WARNING] Deprecation [plugin angular-sass]
+
+    src/styles.scss:2:8:
+      2 Γöé @import 'primeflex/primeflex.scss';
+        Γò╡         ^
+
+
+  Sass @import rules are deprecated and will be removed in Dart Sass 3.0.0.
+  
+  More info and automated migrator: https://sass-lang.com/d/import
+
+  The plugin "angular-sass" was triggered by this import
+
+    angular:styles/global:styles:1:8:
+      1 Γöé @import 'src/styles.scss';
+        Γò╡         ~~~~~~~~~~~~~~~~~
+
+
+X [ERROR] Could not resolve "../../environments/environment"
+
+    src/app/core/api/api-config.ts:2:28:
+      2 Γöé import { environment } from '../../environments/environment';
+        Γò╡                             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+X [ERROR] TS2307: Cannot find module '../../environments/environment' or its corresponding type declarations. [plugin angular-compiler]
+
+    src/app/core/api/api-config.ts:2:28:
+      2 Γöé import { environment } from '../../environments/environment';
+        Γò╡                             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+ΓÇëELIFECYCLEΓÇë Command failed with exit code 1.

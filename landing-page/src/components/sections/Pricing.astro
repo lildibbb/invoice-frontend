@@ -1,0 +1,72 @@
+---
+const included = [
+  'Unlimited invoices & submissions',
+  'LHDN MyInvois API integration',
+  'Multi-company management',
+  'Automated recurring invoices',
+  'Professional PDF with QR codes',
+  'Payment tracking & reminders',
+  '7-year compliance audit trail',
+  'Priority support',
+];
+---
+<section id="pricing" class="py-32 lg:py-40 px-4 bg-white" aria-label="Pricing">
+  <div class="max-w-3xl mx-auto text-center">
+    <h2 class="price-reveal font-display text-3xl sm:text-4xl lg:text-[52px] font-bold text-ink leading-tight tracking-[-0.03em]">
+      Simple pricing.
+    </h2>
+    <p class="price-reveal mt-4 text-lg text-ink-light">
+      No hidden fees. Semua yang you perlukan, one price.
+    </p>
+
+    <div class="pricing-card mt-12 bg-white rounded-2xl border border-border p-8 lg:p-10 max-w-lg mx-auto">
+      <div class="mb-6">
+        <div class="text-sm text-ink-muted mb-2">Starting from</div>
+        <div class="flex items-baseline justify-center gap-1">
+          <span class="font-display text-6xl lg:text-7xl font-extrabold text-ink tracking-tight">RM 49</span>
+          <span class="text-xl text-ink-light">/mo</span>
+        </div>
+        <div class="text-sm text-ink-muted mt-2">per company &middot; billed monthly</div>
+      </div>
+
+      <div class="text-left mb-8">
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          {included.map((feature) => (
+            <div class="flex items-start gap-2.5">
+              <span class="text-ink-muted mt-0.5 flex-shrink-0">&mdash;</span>
+              <span class="text-sm text-ink">{feature}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <a href="#waitlist" class="block w-full bg-accent text-white px-8 py-4 rounded-xl font-semibold text-base text-center hover:bg-accent-hover active:scale-[0.98] transition-all duration-150">
+        Join Waitlist &rarr;
+      </a>
+      <p class="mt-4 text-xs text-ink-muted">Currently invite-only &middot; No credit card required</p>
+    </div>
+
+    <div class="mt-12 text-center">
+      <p class="text-ink-light text-sm">Enterprise or custom integrations?</p>
+      <a href="mailto:hello@invoiz.my" class="inline-flex items-center gap-1.5 text-accent font-semibold text-sm mt-2 hover:text-accent-hover transition-colors">
+        Talk to our team &rarr;
+      </a>
+    </div>
+  </div>
+</section>
+
+<script>
+  import gsap from 'gsap';
+  import { ScrollTrigger } from 'gsap/ScrollTrigger';
+  gsap.registerPlugin(ScrollTrigger);
+
+  gsap.from('.price-reveal', {
+    opacity: 0, y: 25, stagger: 0.1, duration: 0.6, ease: 'power3.out',
+    scrollTrigger: { trigger: '.price-reveal', start: 'top 85%', once: true },
+  });
+
+  gsap.from('.pricing-card', {
+    opacity: 0, y: 30, scale: 0.97, duration: 0.7, ease: 'power3.out',
+    scrollTrigger: { trigger: '.pricing-card', start: 'top 82%', once: true },
+  });
+</script>

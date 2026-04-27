@@ -1,0 +1,66 @@
+---
+const checklist = [
+  'MyInvois API direct integration',
+  'Real-time validation before submission',
+  'Auto-generated QR codes on every invoice',
+  '7-year digital audit trail',
+  'Credit note and debit note support',
+  'Bulk submission for high-volume businesses',
+];
+---
+<section id="compliance" class="py-32 lg:py-40 px-4 bg-white" aria-label="LHDN Compliance">
+  <div class="max-w-6xl mx-auto">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+      <div>
+        <h2 class="lhdn-reveal font-display text-3xl sm:text-4xl lg:text-[48px] font-bold text-ink leading-tight tracking-[-0.03em]">
+          100% LHDN MyInvois compliant.
+        </h2>
+        <p class="lhdn-reveal mt-4 text-lg text-ink-light leading-relaxed">
+          Every invoice validated, submitted, and stored according to Malaysian tax regulations.
+        </p>
+
+        <div class="mt-10 space-y-4">
+          {checklist.map((item) => (
+            <div class="compliance-item flex items-start gap-3">
+              <span class="text-ink-muted mt-0.5 flex-shrink-0">&mdash;</span>
+              <span class="text-base text-ink">{item}</span>
+            </div>
+          ))}
+        </div>
+
+        <a href="/lhdn-compliance" class="mt-8 inline-flex items-center gap-2 text-accent font-semibold text-sm hover:text-accent-hover transition-colors">
+          Learn more about compliance &rarr;
+        </a>
+      </div>
+
+      <div class="lhdn-image">
+        <div class="rounded-2xl border border-border bg-surface-alt overflow-hidden" style="aspect-ratio: 4/3;">
+          <div class="w-full h-full flex items-center justify-center">
+            <p class="text-sm text-ink-muted">Compliance dashboard &middot; Asset coming soon</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  import gsap from 'gsap';
+  import { ScrollTrigger } from 'gsap/ScrollTrigger';
+  gsap.registerPlugin(ScrollTrigger);
+
+  gsap.from('.lhdn-reveal', {
+    opacity: 0, y: 25, stagger: 0.1, duration: 0.6, ease: 'power3.out',
+    scrollTrigger: { trigger: '.lhdn-reveal', start: 'top 85%', once: true },
+  });
+
+  gsap.from('.compliance-item', {
+    opacity: 0, x: -15, stagger: 0.08, duration: 0.5, ease: 'power3.out',
+    scrollTrigger: { trigger: '.compliance-item', start: 'top 85%', once: true },
+  });
+
+  gsap.from('.lhdn-image', {
+    opacity: 0, scale: 0.96, duration: 0.7, ease: 'power3.out',
+    scrollTrigger: { trigger: '.lhdn-image', start: 'top 82%', once: true },
+  });
+</script>

@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Invoiz Customer Management List</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#3c83f6",
+                        "background-light": "#f8fafc",
+                        "background-dark": "#101722",
+                        "sidebar-dark": "#0f172a",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.5rem",
+                        "lg": "1rem",
+                        "xl": "1.5rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        .active-nav { border-left: 4px solid #3c83f6; background-color: rgba(60, 131, 246, 0.1); }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 flex min-h-screen">
+<!-- SideNavBar -->
+<aside class="w-60 bg-sidebar-dark text-slate-300 flex flex-col fixed h-full z-20">
+<div class="p-6 flex items-center gap-3">
+<div class="w-8 h-8 bg-primary rounded-lg flex items-center justify-center text-white">
+<span class="material-symbols-outlined">receipt_long</span>
+</div>
+<div class="flex flex-col">
+<h1 class="text-white text-lg font-bold leading-tight">Invoiz</h1>
+<p class="text-slate-500 text-xs font-medium uppercase tracking-wider">Enterprise SaaS</p>
+</div>
+</div>
+<nav class="flex-1 px-3 mt-4 space-y-1">
+<a class="flex items-center gap-3 px-4 py-3 rounded hover:bg-slate-800 transition-colors" href="#">
+<span class="material-symbols-outlined text-slate-400">dashboard</span>
+<span class="text-sm font-medium">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded hover:bg-slate-800 transition-colors" href="#">
+<span class="material-symbols-outlined text-slate-400">description</span>
+<span class="text-sm font-medium">Invoices</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded active-nav text-white" href="#">
+<span class="material-symbols-outlined text-primary">groups</span>
+<span class="text-sm font-medium">Customers</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded hover:bg-slate-800 transition-colors" href="#">
+<span class="material-symbols-outlined text-slate-400">payments</span>
+<span class="text-sm font-medium">Payments</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded hover:bg-slate-800 transition-colors" href="#">
+<span class="material-symbols-outlined text-slate-400">analytics</span>
+<span class="text-sm font-medium">Reports</span>
+</a>
+</nav>
+<div class="p-4 border-t border-slate-800">
+<a class="flex items-center gap-3 px-4 py-3 rounded hover:bg-slate-800 transition-colors" href="#">
+<span class="material-symbols-outlined text-slate-400">settings</span>
+<span class="text-sm font-medium">Settings</span>
+</a>
+<div class="mt-4 flex items-center gap-3 px-4 py-2">
+<div class="size-8 rounded-full bg-slate-700 overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="User avatar of the system administrator" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDZomURp5k_FWLAQ19HZHcQws_pBgQJnRbmeqzroFFF9FK96jf5dyUk4yktjvjw7GKgaP3aTcuJHb60l5Goc6aRyFhqqgc_4CC2OxjIyxkWNh3fdRI0asY5f5LMvMI8HWay6gyhx0DhlKi6DvNvCXf7KfVEiGT8_svTMPzOSe-AVpgi5MWCEw6PmBjVt-2wDGmABE-mt0SUAjdG4ju7WxMsqrXebt6K52nMB8Pjxo9m58uln-YqgdSmDBqztS67Cidqz0cDmca-oro"/>
+</div>
+<div class="flex flex-col">
+<p class="text-xs font-semibold text-white">Admin User</p>
+<p class="text-[10px] text-slate-500">Super Admin</p>
+</div>
+</div>
+</div>
+</aside>
+<!-- Main Content -->
+<main class="flex-1 ml-60 flex flex-col">
+<!-- Header -->
+<header class="h-16 bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800 px-8 flex items-center justify-between sticky top-0 z-10">
+<h2 class="text-xl font-bold text-slate-800 dark:text-white">Customers</h2>
+<div class="flex items-center gap-4">
+<div class="relative">
+<span class="material-symbols-outlined text-slate-400 absolute left-3 top-1/2 -translate-y-1/2">notifications</span>
+<span class="absolute top-2 right-2 size-2 bg-red-500 rounded-full border-2 border-white dark:border-slate-900"></span>
+</div>
+<button class="bg-primary hover:bg-blue-600 text-white px-4 py-2 rounded-lg text-sm font-semibold flex items-center gap-2 transition-all shadow-sm">
+<span class="material-symbols-outlined text-lg">add</span>
+                    Add Customer
+                </button>
+</div>
+</header>
+<!-- Content Area -->
+<div class="p-8 space-y-8">
+<!-- Summary Chips -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+<div class="bg-white dark:bg-slate-900 p-6 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm flex flex-col gap-1">
+<p class="text-slate-500 dark:text-slate-400 text-sm font-medium">Total Customers</p>
+<p class="text-2xl font-bold text-slate-900 dark:text-white">142</p>
+<div class="flex items-center text-emerald-500 text-xs mt-2">
+<span class="material-symbols-outlined text-xs">arrow_upward</span>
+<span class="ml-1 font-semibold">4% from last month</span>
+</div>
+</div>
+<div class="bg-white dark:bg-slate-900 p-6 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm flex flex-col gap-1">
+<p class="text-slate-500 dark:text-slate-400 text-sm font-medium">Active</p>
+<p class="text-2xl font-bold text-slate-900 dark:text-white">138</p>
+<div class="w-full bg-slate-100 dark:bg-slate-800 h-1.5 rounded-full mt-3 overflow-hidden">
+<div class="bg-primary h-full rounded-full" style="width: 97%;"></div>
+</div>
+</div>
+<div class="bg-white dark:bg-slate-900 p-6 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm flex flex-col gap-1">
+<p class="text-slate-500 dark:text-slate-400 text-sm font-medium">Total Invoiced</p>
+<p class="text-2xl font-bold text-slate-900 dark:text-white">RM 847,000</p>
+<div class="flex items-center text-emerald-500 text-xs mt-2">
+<span class="material-symbols-outlined text-xs">trending_up</span>
+<span class="ml-1 font-semibold">RM 12k since Monday</span>
+</div>
+</div>
+<div class="bg-white dark:bg-slate-900 p-6 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm flex flex-col gap-1">
+<p class="text-slate-500 dark:text-slate-400 text-sm font-medium">Outstanding</p>
+<p class="text-2xl font-bold text-slate-900 dark:text-white text-red-500">RM 28,400</p>
+<p class="text-slate-400 dark:text-slate-500 text-[10px] mt-2 italic">12 invoices overdue</p>
+</div>
+</div>
+<!-- Filter Bar -->
+<div class="flex flex-wrap items-center justify-between gap-4">
+<div class="flex-1 min-w-[300px] max-w-md relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-400">search</span>
+<input class="w-full pl-10 pr-4 py-2.5 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary text-sm transition-all outline-none" placeholder="Search customers by name, company or email..." type="text"/>
+</div>
+<div class="flex items-center gap-3">
+<button class="flex items-center gap-2 px-4 py-2.5 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-lg text-sm font-medium hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors">
+<span class="material-symbols-outlined text-slate-400">filter_list</span>
+                        Status
+                        <span class="material-symbols-outlined text-slate-400 text-sm">expand_more</span>
+</button>
+<button class="flex items-center gap-2 px-4 py-2.5 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-lg text-sm font-medium hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors">
+<span class="material-symbols-outlined text-slate-400">sort</span>
+                        Sort
+                        <span class="material-symbols-outlined text-slate-400 text-sm">expand_more</span>
+</button>
+</div>
+</div>
+<!-- Table Card -->
+<div class="bg-white dark:bg-slate-900 rounded-[12px] border border-slate-200 dark:border-slate-800 shadow-sm overflow-hidden">
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-slate-50 dark:bg-slate-800/50 border-b border-slate-200 dark:border-slate-800">
+<th class="p-4 w-10">
+<input class="rounded text-primary focus:ring-primary border-slate-300" type="checkbox"/>
+</th>
+<th class="p-4 text-xs font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400">Customer Name</th>
+<th class="p-4 text-xs font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400">Company</th>
+<th class="p-4 text-xs font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400">Email &amp; Phone</th>
+<th class="p-4 text-xs font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400">Total Invoiced</th>
+<th class="p-4 text-xs font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400">Outstanding</th>
+<th class="p-4 text-xs font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400">Status</th>
+<th class="p-4 text-xs font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400 text-right">Actions</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-slate-100 dark:divide-slate-800">
+<!-- Row 1 -->
+<tr class="hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors">
+<td class="p-4"><input class="rounded text-primary focus:ring-primary border-slate-300" type="checkbox"/></td>
+<td class="p-4">
+<div class="flex items-center gap-3">
+<div class="size-9 rounded-full bg-blue-100 dark:bg-blue-900 flex items-center justify-center text-primary font-bold text-xs">AR</div>
+<span class="text-sm font-semibold text-slate-900 dark:text-white">Ahmad Rizal</span>
+</div>
+</td>
+<td class="p-4 text-sm text-slate-600 dark:text-slate-300">Rizal Logistics Sdn Bhd</td>
+<td class="p-4">
+<div class="flex flex-col">
+<span class="text-sm text-slate-900 dark:text-white">ahmad@rizal.my</span>
+<span class="text-xs text-slate-400">+60 12-345 6789</span>
+</div>
+</td>
+<td class="p-4 text-sm font-medium">RM 124,500.00</td>
+<td class="p-4 text-sm text-red-500 font-medium">RM 4,200.00</td>
+<td class="p-4">
+<span class="px-2.5 py-1 rounded-full text-[10px] font-bold uppercase bg-emerald-100 text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-400">Active</span>
+</td>
+<td class="p-4 text-right">
+<div class="flex items-center justify-end gap-2">
+<button class="p-1.5 hover:bg-slate-100 dark:hover:bg-slate-700 rounded text-slate-400 hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-xl">visibility</span>
+</button>
+<button class="p-1.5 hover:bg-slate-100 dark:hover:bg-slate-700 rounded text-slate-400 hover:text-slate-600 transition-colors">
+<span class="material-symbols-outlined text-xl">edit</span>
+</button>
+<button class="p-1.5 hover:bg-slate-100 dark:hover:bg-slate-700 rounded text-slate-400 hover:text-slate-600 transition-colors">
+<span class="material-symbols-outlined text-xl">more_vert</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 2 -->
+<tr class="hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors">
+<td class="p-4"><input class="rounded text-primary focus:ring-primary border-slate-300" type="checkbox"/></td>
+<td class="p-4">
+<div class="flex items-center gap-3">
+<div class="size-9 rounded-full bg-purple-100 dark:bg-purple-900 flex items-center justify-center text-purple-600 font-bold text-xs">PK</div>
+<span class="text-sm font-semibold text-slate-900 dark:text-white">Priya Krishnan</span>
+</div>
+</td>
+<td class="p-4 text-sm text-slate-600 dark:text-slate-300">PK Textiles &amp; Decor</td>
+<td class="p-4">
+<div class="flex flex-col">
+<span class="text-sm text-slate-900 dark:text-white">priya@pktextiles.com</span>
+<span class="text-xs text-slate-400">+60 17-888 2341</span>
+</div>
+</td>
+<td class="p-4 text-sm font-medium">RM 89,200.00</td>
+<td class="p-4 text-sm text-slate-400">RM 0.00</td>
+<td class="p-4">
+<span class="px-2.5 py-1 rounded-full text-[10px] font-bold uppercase bg-emerald-100 text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-400">Active</span>
+</td>
+<td class="p-4 text-right">
+<div class="flex items-center justify-end gap-2">
+<button class="p-1.5 hover:bg-slate-100 dark:hover:bg-slate-700 rounded text-slate-400 hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-xl">visibility</span>
+</button>
+<button class="p-1.5 hover:bg-slate-100 dark:hover:bg-slate-700 rounded text-slate-400 hover:text-slate-600 transition-colors">
+<span class="material-symbols-outlined text-xl">edit</span>
+</button>
+<button class="p-1.5 hover:bg-slate-100 dark:hover:bg-slate-700 rounded text-slate-400 hover:text-slate-600 transition-colors">
+<span class="material-symbols-outlined text-xl">more_vert</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 3 -->
+<tr class="hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors">
+<td class="p-4"><input class="rounded text-primary focus:ring-primary border-slate-300" type="checkbox"/></td>
+<td class="p-4">
+<div class="flex items-center gap-3">
+<div class="size-9 rounded-full bg-orange-100 dark:bg-orange-900 flex items-center justify-center text-orange-600 font-bold text-xs">LW</div>
+<span class="text-sm font-semibold text-slate-900 dark:text-white">Lim Wei Liang</span>
+</div>
+</td>
+<td class="p-4 text-sm text-slate-600 dark:text-slate-300">Wei Liang Tech Solutions</td>
+<td class="p-4">
+<div class="flex flex-col">
+<span class="text-sm text-slate-900 dark:text-white">weiliang@techsol.my</span>
+<span class="text-xs text-slate-400">+60 11-222 5555</span>
+</div>
+</td>
+<td class="p-4 text-sm font-medium">RM 210,000.00</td>
+<td class="p-4 text-sm text-red-500 font-medium">RM 12,000.00</td>
+<td class="p-4">
+<span class="px-2.5 py-1 rounded-full text-[10px] font-bold uppercase bg-emerald-100 text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-400">Active</span>
+</td>
+<td class="p-4 text-right">
+<div class="flex items-center justify-end gap-2">
+<button class="p-1.5 hover:bg-slate-100 dark:hover:bg-slate-700 rounded text-slate-400 hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-xl">visibility</span>
+</button>
+<button class="p-1.5 hover:bg-slate-100 dark:hover:bg-slate-700 rounded text-slate-400 hover:text-slate-600 transition-colors">
+<span class="material-symbols-outlined text-xl">edit</span>
+</button>
+<button class="p-1.5 hover:bg-slate-100 dark:hover:bg-slate-700 rounded text-slate-400 hover:text-slate-600 transition-colors">
+<span class="material-symbols-outlined text-xl">more_vert</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 4 -->
+<tr class="hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors">
+<td class="p-4"><input class="rounded text-primary focus:ring-primary border-slate-300" type="checkbox"/></td>
+<td class="p-4">
+<div class="flex items-center gap-3">
+<div class="size-9 rounded-full bg-slate-100 dark:bg-slate-700 flex items-center justify-center text-slate-500 font-bold text-xs">SK</div>
+<span class="text-sm font-semibold text-slate-900 dark:text-white">Siti Khadijah</span>
+</div>
+</td>
+<td class="p-4 text-sm text-slate-600 dark:text-slate-300">Boutique Khadijah</td>
+<td class="p-4">
+<div class="flex flex-col">
+<span class="text-sm text-slate-900 dark:text-white">siti@boutiquekh.com</span>
+<span class="text-xs text-slate-400">+60 19-333 4444</span>
+</div>
+</td>
+<td class="p-4 text-sm font-medium">RM 45,600.00</td>
+<td class="p-4 text-sm text-slate-400">RM 0.00</td>
+<td class="p-4">
+<span class="px-2.5 py-1 rounded-full text-[10px] font-bold uppercase bg-slate-100 text-slate-500 dark:bg-slate-800 dark:text-slate-400">Inactive</span>
+</td>
+<td class="p-4 text-right">
+<div class="flex items-center justify-end gap-2">
+<button class="p-1.5 hover:bg-slate-100 dark:hover:bg-slate-700 rounded text-slate-400 hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-xl">visibility</span>
+</button>
+<button class="p-1.5 hover:bg-slate-100 dark:hover:bg-slate-700 rounded text-slate-400 hover:text-slate-600 transition-colors">
+<span class="material-symbols-outlined text-xl">edit</span>
+</button>
+<button class="p-1.5 hover:bg-slate-100 dark:hover:bg-slate-700 rounded text-slate-400 hover:text-slate-600 transition-colors">
+<span class="material-symbols-outlined text-xl">more_vert</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 5 -->
+<tr class="hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors">
+<td class="p-4"><input class="rounded text-primary focus:ring-primary border-slate-300" type="checkbox"/></td>
+<td class="p-4">
+<div class="flex items-center gap-3">
+<div class="size-9 rounded-full bg-pink-100 dark:bg-pink-900 flex items-center justify-center text-pink-600 font-bold text-xs">MM</div>
+<span class="text-sm font-semibold text-slate-900 dark:text-white">Mei Mei Tan</span>
+</div>
+</td>
+<td class="p-4 text-sm text-slate-600 dark:text-slate-300">Floral Designs KL</td>
+<td class="p-4">
+<div class="flex flex-col">
+<span class="text-sm text-slate-900 dark:text-white">meimei@floral.my</span>
+<span class="text-xs text-slate-400">+60 16-777 9999</span>
+</div>
+</td>
+<td class="p-4 text-sm font-medium">RM 67,800.00</td>
+<td class="p-4 text-sm text-red-500 font-medium">RM 8,500.00</td>
+<td class="p-4">
+<span class="px-2.5 py-1 rounded-full text-[10px] font-bold uppercase bg-emerald-100 text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-400">Active</span>
+</td>
+<td class="p-4 text-right">
+<div class="flex items-center justify-end gap-2">
+<button class="p-1.5 hover:bg-slate-100 dark:hover:bg-slate-700 rounded text-slate-400 hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-xl">visibility</span>
+</button>
+<button class="p-1.5 hover:bg-slate-100 dark:hover:bg-slate-700 rounded text-slate-400 hover:text-slate-600 transition-colors">
+<span class="material-symbols-outlined text-xl">edit</span>
+</button>
+<button class="p-1.5 hover:bg-slate-100 dark:hover:bg-slate-700 rounded text-slate-400 hover:text-slate-600 transition-colors">
+<span class="material-symbols-outlined text-xl">more_vert</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 6 -->
+<tr class="hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors">
+<td class="p-4"><input class="rounded text-primary focus:ring-primary border-slate-300" type="checkbox"/></td>
+<td class="p-4">
+<div class="flex items-center gap-3">
+<div class="size-9 rounded-full bg-teal-100 dark:bg-teal-900 flex items-center justify-center text-teal-600 font-bold text-xs">JR</div>
+<span class="text-sm font-semibold text-slate-900 dark:text-white">Jason Ravi</span>
+</div>
+</td>
+<td class="p-4 text-sm text-slate-600 dark:text-slate-300">Ravi Engineering Works</td>
+<td class="p-4">
+<div class="flex flex-col">
+<span class="text-sm text-slate-900 dark:text-white">jason@raviworks.com</span>
+<span class="text-xs text-slate-400">+60 14-555 1122</span>
+</div>
+</td>
+<td class="p-4 text-sm font-medium">RM 310,000.00</td>
+<td class="p-4 text-sm text-red-500 font-medium">RM 3,700.00</td>
+<td class="p-4">
+<span class="px-2.5 py-1 rounded-full text-[10px] font-bold uppercase bg-emerald-100 text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-400">Active</span>
+</td>
+<td class="p-4 text-right">
+<div class="flex items-center justify-end gap-2">
+<button class="p-1.5 hover:bg-slate-100 dark:hover:bg-slate-700 rounded text-slate-400 hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-xl">visibility</span>
+</button>
+<button class="p-1.5 hover:bg-slate-100 dark:hover:bg-slate-700 rounded text-slate-400 hover:text-slate-600 transition-colors">
+<span class="material-symbols-outlined text-xl">edit</span>
+</button>
+<button class="p-1.5 hover:bg-slate-100 dark:hover:bg-slate-700 rounded text-slate-400 hover:text-slate-600 transition-colors">
+<span class="material-symbols-outlined text-xl">more_vert</span>
+</button>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Pagination -->
+<div class="p-4 bg-slate-50 dark:bg-slate-800/50 border-t border-slate-200 dark:border-slate-800 flex items-center justify-between">
+<p class="text-xs text-slate-500 dark:text-slate-400 font-medium">Showing 1 to 6 of 142 customers</p>
+<div class="flex items-center gap-2">
+<button class="px-3 py-1.5 border border-slate-200 dark:border-slate-700 rounded bg-white dark:bg-slate-900 text-xs font-semibold text-slate-400 cursor-not-allowed">Previous</button>
+<button class="px-3 py-1.5 border border-primary bg-primary text-white rounded text-xs font-semibold">1</button>
+<button class="px-3 py-1.5 border border-slate-200 dark:border-slate-700 rounded bg-white dark:bg-slate-900 text-xs font-semibold hover:bg-slate-50 dark:hover:bg-slate-800">2</button>
+<button class="px-3 py-1.5 border border-slate-200 dark:border-slate-700 rounded bg-white dark:bg-slate-900 text-xs font-semibold hover:bg-slate-50 dark:hover:bg-slate-800">3</button>
+<span class="text-slate-400 px-1">...</span>
+<button class="px-3 py-1.5 border border-slate-200 dark:border-slate-700 rounded bg-white dark:bg-slate-900 text-xs font-semibold hover:bg-slate-50 dark:hover:bg-slate-800">24</button>
+<button class="px-3 py-1.5 border border-slate-200 dark:border-slate-700 rounded bg-white dark:bg-slate-900 text-xs font-semibold hover:bg-slate-50 dark:hover:bg-slate-800 text-primary">Next</button>
+</div>
+</div>
+</div>
+</div>
+</main>
+</body></html>

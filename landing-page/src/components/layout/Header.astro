@@ -1,0 +1,78 @@
+---
+const navLinks = [
+  { href: '#features', label: 'Features' },
+  { href: '#how-it-works', label: 'How It Works' },
+  { href: '#compliance', label: 'LHDN' },
+  { href: '#pricing', label: 'Pricing' },
+];
+---
+<header id="site-header" class="fixed top-0 left-0 right-0 z-50 bg-white border-b border-border transition-shadow duration-300">
+  <div class="max-w-6xl mx-auto px-6 lg:px-8">
+    <div class="flex items-center justify-between h-16">
+      <a href="/" class="flex items-center gap-2">
+        <div class="w-7 h-7 rounded-md bg-accent flex items-center justify-center">
+          <span class="text-[10px] font-extrabold text-white tracking-tight">iz</span>
+        </div>
+        <span class="font-display text-lg font-bold text-ink">Invoiz</span>
+      </a>
+
+      <nav class="hidden lg:flex items-center gap-1">
+        {navLinks.map((link) => (
+          <a href={link.href} class="text-[13px] font-medium text-ink-light hover:text-ink px-3.5 py-2 transition-colors duration-150">
+            {link.label}
+          </a>
+        ))}
+      </nav>
+
+      <div class="hidden lg:block">
+        <a href="#waitlist" class="bg-accent text-white px-5 py-2 rounded-lg font-semibold text-sm hover:bg-accent-hover active:scale-[0.97] transition-all duration-150">
+          Join Waitlist &rarr;
+        </a>
+      </div>
+
+      <button id="mobile-menu-btn" class="lg:hidden text-ink p-2" aria-label="Open menu">
+        <svg class="w-5 h-5" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 6h14M3 10h14M3 14h14"/></svg>
+      </button>
+    </div>
+  </div>
+
+  <div id="mobile-menu" class="fixed inset-0 z-50 bg-white flex flex-col items-center justify-center gap-6 hidden" role="dialog" aria-modal="true">
+    <button id="mobile-menu-close" class="absolute top-5 right-5 text-ink p-2" aria-label="Close menu">
+      <svg class="w-5 h-5" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 5l10 10M15 5L5 15"/></svg>
+    </button>
+    {navLinks.map((link) => (
+      <a href={link.href} class="mobile-nav-link text-xl text-ink-light font-medium hover:text-ink transition-colors">{link.label}</a>
+    ))}
+    <a href="#waitlist" class="bg-accent text-white px-8 py-3 rounded-lg font-semibold mt-4">Join Waitlist &rarr;</a>
+  </div>
+</header>
+
+<script>
+  const header = document.getElementById('site-header');
+  const menuBtn = document.getElementById('mobile-menu-btn');
+  const menuClose = document.getElementById('mobile-menu-close');
+  const menu = document.getElementById('mobile-menu');
+
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 40) {
+      header?.classList.add('shadow-subtle');
+    } else {
+      header?.classList.remove('shadow-subtle');
+    }
+  }, { passive: true });
+
+  menuBtn?.addEventListener('click', () => {
+    menu?.classList.remove('hidden');
+    document.body.style.overflow = 'hidden';
+  });
+
+  function closeMenu() {
+    menu?.classList.add('hidden');
+    document.body.style.overflow = '';
+  }
+
+  menuClose?.addEventListener('click', closeMenu);
+  menu?.querySelectorAll('.mobile-nav-link').forEach((link) => {
+    link.addEventListener('click', closeMenu);
+  });
+</script>

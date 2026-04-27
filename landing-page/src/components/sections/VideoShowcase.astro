@@ -1,0 +1,49 @@
+---
+---
+<section id="video" class="py-32 lg:py-40 px-4 bg-surface" aria-label="Product demo">
+  <div class="max-w-6xl mx-auto">
+    <div class="text-center mb-16">
+      <h2 class="font-display text-3xl sm:text-4xl lg:text-[52px] font-bold text-ink leading-tight tracking-[-0.03em] video-reveal">
+        See Invoiz in action
+      </h2>
+    </div>
+
+    <div class="video-container max-w-4xl mx-auto">
+      <div class="relative rounded-2xl border border-border overflow-hidden shadow-card bg-surface-alt" style="aspect-ratio: 16/9;">
+        <video
+          id="demo-video"
+          class="w-full h-full object-cover"
+          preload="none"
+          poster=""
+          controls
+        >
+          <!-- Video source will be added when Veo Flow asset is ready -->
+        </video>
+
+        <!-- Placeholder overlay (shown when no video src) -->
+        <div id="video-placeholder" class="absolute inset-0 flex flex-col items-center justify-center bg-surface-alt">
+          <button id="video-play-btn" class="w-16 h-16 rounded-full bg-accent flex items-center justify-center hover:bg-accent-hover transition-colors shadow-lg" aria-label="Play demo video">
+            <svg class="w-6 h-6 text-white ml-1" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+          </button>
+          <p class="mt-4 text-sm text-ink-muted">Product walkthrough &middot; 2 min</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  import gsap from 'gsap';
+  import { ScrollTrigger } from 'gsap/ScrollTrigger';
+  gsap.registerPlugin(ScrollTrigger);
+
+  gsap.from('.video-reveal', {
+    opacity: 0, y: 25, duration: 0.6, ease: 'power3.out',
+    scrollTrigger: { trigger: '.video-reveal', start: 'top 85%', once: true },
+  });
+
+  gsap.from('.video-container', {
+    opacity: 0, scale: 0.95, duration: 0.8, ease: 'power3.out',
+    scrollTrigger: { trigger: '.video-container', start: 'top 82%', once: true },
+  });
+</script>

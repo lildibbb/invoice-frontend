@@ -1,0 +1,22 @@
+---
+const companies = [
+  'TechVentures',
+  'Nusantara Group',
+  'KL Digital',
+  'Borneo Capital',
+  'Sarawak Energy',
+  'Penang Ventures',
+];
+---
+<section class="py-16 px-4 bg-white" aria-label="Trusted by">
+  <div class="max-w-5xl mx-auto text-center">
+    <p class="text-sm text-ink-muted mb-8">Trusted by businesses across Malaysia</p>
+    <div class="flex flex-wrap items-center justify-center gap-x-12 gap-y-6">
+      {companies.map((name) => (
+        <div class="text-ink-muted/40 font-display font-bold text-lg tracking-tight select-none">
+          {name}
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

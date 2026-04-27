@@ -1,0 +1,97 @@
+---
+---
+<section id="features" class="py-32 lg:py-40 px-4 bg-surface" aria-label="Features">
+  <div class="max-w-6xl mx-auto">
+    <div class="text-center mb-16 lg:mb-20">
+      <h2 class="feat-reveal font-display text-3xl sm:text-4xl lg:text-[52px] font-bold text-ink leading-tight tracking-[-0.03em]">
+        Everything you need. Nothing you don&rsquo;t.
+      </h2>
+    </div>
+
+    <!-- Bento grid -->
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-4">
+      <!-- Row 1: Large (2 col) + Small (1 col) -->
+      <div class="feat-card lg:col-span-2 bg-white rounded-2xl border border-border p-8">
+        <h3 class="font-display text-xl font-bold text-ink mb-2">Smart Invoice Editor</h3>
+        <p class="text-base text-ink-light mb-6 max-w-md">
+          Intuitive editor dengan smart auto-fill. Customer data, products, tax rates — semua auto-populate dalam seconds.
+        </p>
+        <div class="rounded-xl border border-border bg-surface-alt overflow-hidden" style="aspect-ratio: 16/10;">
+          <div class="w-full h-full flex items-center justify-center">
+            <p class="text-sm text-ink-muted">Screenshot coming soon</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="feat-card bg-white rounded-2xl border border-border p-8 flex flex-col justify-between">
+        <div>
+          <h3 class="font-display text-xl font-bold text-ink mb-2">LHDN Submission</h3>
+          <p class="text-base text-ink-light">
+            One-click submit ke MyInvois API. Auto-validate dulu — format betul, data lengkap. Takde headache.
+          </p>
+        </div>
+        <div class="mt-8">
+          <div class="font-display text-6xl font-extrabold text-border tracking-tight">1.2s</div>
+          <p class="text-sm text-ink-muted mt-1">Average LHDN response time</p>
+        </div>
+      </div>
+
+      <!-- Row 2: Small (1 col) + Large (2 col) -->
+      <div class="feat-card bg-white rounded-2xl border border-border p-8 flex flex-col justify-between">
+        <div>
+          <h3 class="font-display text-xl font-bold text-ink mb-2">Payment Tracking</h3>
+          <p class="text-base text-ink-light">
+            Real-time status tracking. Automated payment reminders so you tak perlu kejar client manually.
+          </p>
+        </div>
+        <div class="mt-8">
+          <div class="font-display text-6xl font-extrabold text-border tracking-tight">98%</div>
+          <p class="text-sm text-ink-muted mt-1">Collection rate with auto-reminders</p>
+        </div>
+      </div>
+
+      <div class="feat-card lg:col-span-2 bg-white rounded-2xl border border-border p-8">
+        <h3 class="font-display text-xl font-bold text-ink mb-2">Multi-Company Management</h3>
+        <p class="text-base text-ink-light mb-6 max-w-md">
+          Manage multiple Sdn Bhd or enterprise entities from satu dashboard. Switch between companies in one click.
+        </p>
+        <div class="rounded-xl border border-border bg-surface-alt overflow-hidden" style="aspect-ratio: 16/10;">
+          <div class="w-full h-full flex items-center justify-center">
+            <p class="text-sm text-ink-muted">Screenshot coming soon</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Row 3: Two cards -->
+      <div class="feat-card bg-white rounded-2xl border border-border p-8 lg:col-span-1">
+        <h3 class="font-display text-xl font-bold text-ink mb-2">Recurring Invoices</h3>
+        <p class="text-base text-ink-light">
+          Set once, auto-generate monthly. Perfect for retainer clients and subscription-based services.
+        </p>
+      </div>
+
+      <div class="feat-card bg-white rounded-2xl border border-border p-8 lg:col-span-2">
+        <h3 class="font-display text-xl font-bold text-ink mb-2">7-Year Audit Trail</h3>
+        <p class="text-base text-ink-light">
+          Complete compliance history. Every invoice, submission, and payment stored securely for LHDN audit requirements.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  import gsap from 'gsap';
+  import { ScrollTrigger } from 'gsap/ScrollTrigger';
+  gsap.registerPlugin(ScrollTrigger);
+
+  gsap.from('.feat-reveal', {
+    opacity: 0, y: 25, duration: 0.6, ease: 'power3.out',
+    scrollTrigger: { trigger: '.feat-reveal', start: 'top 85%', once: true },
+  });
+
+  gsap.from('.feat-card', {
+    opacity: 0, scale: 0.96, stagger: 0.08, duration: 0.6, ease: 'power3.out',
+    scrollTrigger: { trigger: '.feat-card', start: 'top 88%', once: true },
+  });
+</script>

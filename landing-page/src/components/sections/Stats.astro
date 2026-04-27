@@ -1,0 +1,33 @@
+---
+const stats = [
+  { value: '2,300', suffix: '+', label: 'Invoices generated' },
+  { value: 'RM 4.2', suffix: 'M', label: 'Processed' },
+  { value: '1.2', suffix: 's', label: 'Avg LHDN response' },
+  { value: '99.9', suffix: '%', label: 'Uptime' },
+];
+---
+<section class="py-20 lg:py-24 px-4 bg-dark" aria-label="Statistics">
+  <div class="max-w-6xl mx-auto">
+    <div class="grid grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-0">
+      {stats.map((stat, i) => (
+        <div class={`stat-item text-center ${i < stats.length - 1 ? 'lg:border-r lg:border-white/10' : ''}`}>
+          <div class="font-display text-4xl lg:text-5xl font-extrabold text-white mb-2 tracking-tight">
+            <span class="stat-number">{stat.value}</span>{stat.suffix}
+          </div>
+          <div class="text-sm text-white/50">{stat.label}</div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<script>
+  import gsap from 'gsap';
+  import { ScrollTrigger } from 'gsap/ScrollTrigger';
+  gsap.registerPlugin(ScrollTrigger);
+
+  gsap.from('.stat-item', {
+    opacity: 0, y: 20, stagger: 0.1, duration: 0.5, ease: 'power3.out',
+    scrollTrigger: { trigger: '.stat-item', start: 'top 88%', once: true },
+  });
+</script>

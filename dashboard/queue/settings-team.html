@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Invoiz Team Members Settings</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#0d59f2",
+                        "background-light": "#f5f6f8",
+                        "background-dark": "#101622",
+                    },
+                    fontFamily: {
+                        "display": ["Inter"]
+                    },
+                    borderRadius: {"DEFAULT": "0.5rem", "lg": "1rem", "xl": "1.5rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        .active-nav { background-color: rgba(13, 89, 242, 0.1); color: #0d59f2; border-right: 3px solid #0d59f2; }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 font-display">
+<div class="flex min-h-screen">
+<!-- Sidebar -->
+<aside class="w-[240px] bg-slate-900 text-slate-300 flex flex-col fixed h-full border-r border-slate-800">
+<div class="p-6 flex items-center gap-3">
+<div class="size-8 bg-primary rounded-lg flex items-center justify-center">
+<span class="material-symbols-outlined text-white">receipt_long</span>
+</div>
+<div class="flex flex-col">
+<h1 class="text-white text-lg font-bold leading-tight">Invoiz</h1>
+<p class="text-slate-500 text-xs">Enterprise E-invoice</p>
+</div>
+</div>
+<nav class="flex-1 px-3 space-y-1 mt-4">
+<a class="flex items-center gap-3 px-3 py-2.5 rounded hover:bg-slate-800 transition-colors" href="#">
+<span class="material-symbols-outlined opacity-70">dashboard</span>
+<span class="text-sm font-medium">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded hover:bg-slate-800 transition-colors" href="#">
+<span class="material-symbols-outlined opacity-70">description</span>
+<span class="text-sm font-medium">Invoices</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded hover:bg-slate-800 transition-colors" href="#">
+<span class="material-symbols-outlined opacity-70">payments</span>
+<span class="text-sm font-medium">Expenses</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded hover:bg-slate-800 transition-colors" href="#">
+<span class="material-symbols-outlined opacity-70">group</span>
+<span class="text-sm font-medium">Clients</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded hover:bg-slate-800 transition-colors" href="#">
+<span class="material-symbols-outlined opacity-70">analytics</span>
+<span class="text-sm font-medium">Reports</span>
+</a>
+<div class="pt-4 pb-2 px-3">
+<p class="text-[10px] uppercase tracking-widest text-slate-500 font-bold">Administration</p>
+</div>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded bg-slate-800 text-white" href="#">
+<span class="material-symbols-outlined text-primary">settings</span>
+<span class="text-sm font-medium">Settings</span>
+</a>
+</nav>
+<div class="p-4 border-t border-slate-800">
+<div class="flex items-center gap-3 px-2">
+<div class="size-8 rounded-full bg-slate-700 overflow-hidden">
+<img alt="User" data-alt="User profile picture of an executive" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD3FlLwOQvVrDXW3Cw-0THIEzQ0MgBq72h7FMV2RupuTgzYGECh9UaOJ3WD1iIZTTk5EhUwEtSbyd40MUudo-MauRo05usa2zGzZLD6ANvopb2OqSOPbX6DY2sZpNQbzcnD3jH79iS6ND32Rtn7bgATER_WUES_o7GsjN-jaqBGGnBO6rWlOd48dElg1LUekuJrDLEFPqsr-F786fq2MTI1pD2Oaw0xh8eYYZemva1_awEa7v5uu1vLllfGNxvc6u_yEcQm5YYPeqI"/>
+</div>
+<div class="flex-1 min-w-0">
+<p class="text-sm font-medium text-white truncate">Ahmad Rizal</p>
+<p class="text-xs text-slate-500 truncate">Owner</p>
+</div>
+</div>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="ml-[240px] flex-1 p-8">
+<div class="max-w-6xl mx-auto">
+<header class="mb-8">
+<h2 class="text-2xl font-bold text-slate-900 dark:text-slate-100">Settings</h2>
+<p class="text-slate-500 dark:text-slate-400">Manage your company preferences and team permissions.</p>
+</header>
+<div class="flex gap-8">
+<!-- Left Sub-navigation -->
+<aside class="w-[200px] shrink-0">
+<div class="bg-white dark:bg-slate-900 rounded-lg shadow-sm border border-slate-200 dark:border-slate-800 overflow-hidden">
+<nav class="flex flex-col">
+<a class="px-4 py-3 text-sm font-medium text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 border-l-4 border-transparent" href="#">Company Profile</a>
+<a class="px-4 py-3 text-sm font-bold text-primary bg-primary/5 border-l-4 border-primary" href="#">Team Members</a>
+<a class="px-4 py-3 text-sm font-medium text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 border-l-4 border-transparent" href="#">Tax Settings</a>
+<a class="px-4 py-3 text-sm font-medium text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 border-l-4 border-transparent" href="#">Integrations</a>
+<a class="px-4 py-3 text-sm font-medium text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 border-l-4 border-transparent" href="#">Notifications</a>
+</nav>
+</div>
+</aside>
+<!-- Right Content Column -->
+<section class="flex-1 space-y-6">
+<!-- Team Members List Card -->
+<div class="bg-white dark:bg-slate-900 rounded-lg shadow-sm border border-slate-200 dark:border-slate-800 overflow-hidden">
+<div class="p-6 border-b border-slate-100 dark:border-slate-800 flex justify-between items-center">
+<div>
+<h3 class="text-xl font-bold text-slate-900 dark:text-slate-100">Team Members</h3>
+<p class="text-sm text-slate-500 dark:text-slate-400">4 total members in your organization</p>
+</div>
+<button class="bg-primary hover:bg-primary/90 text-white px-4 py-2 rounded-lg text-sm font-bold flex items-center gap-2 transition-all">
+<span class="material-symbols-outlined text-sm">person_add</span>
+                                    Invite Member
+                                </button>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left">
+<thead>
+<tr class="bg-slate-50 dark:bg-slate-800/50">
+<th class="px-6 py-4 text-xs font-bold uppercase tracking-wider text-slate-500">Name / Email</th>
+<th class="px-6 py-4 text-xs font-bold uppercase tracking-wider text-slate-500">Role</th>
+<th class="px-6 py-4 text-xs font-bold uppercase tracking-wider text-slate-500">Status</th>
+<th class="px-6 py-4 text-xs font-bold uppercase tracking-wider text-slate-500">Last Active</th>
+<th class="px-6 py-4 text-xs font-bold uppercase tracking-wider text-slate-500 text-right">Actions</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-slate-100 dark:divide-slate-800">
+<!-- Member 1 -->
+<tr>
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="size-10 rounded-full bg-slate-200 overflow-hidden">
+<img alt="Ahmad Rizal" data-alt="Portrait of Ahmad Rizal" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAO9QXXfz0aLzTbwWz_DbFDiRCilMWYhqBE1RtmH_infEkqGv2PJveIW0HlOKU5yqvE9KfeheO-u70O1NKhL2zIyMHPux0KkzBA7HSJEDrvA4OWa3-yPkQCSye0ZY5U6YGA02uYUNKSJbvBb9XFGIJzjkvESvTbHDxRanoy_r2fcVVfwzfxsYJUdsP1Eu4_6f7V2oIIWTHk-dBNx6PFN26dpfcmR8v9hRUOTVLjjvwwL9ICRNvFeNBDQ3YE6Ozdb0dJ2jpwKPXBj84"/>
+</div>
+<div>
+<p class="text-sm font-semibold text-slate-900 dark:text-slate-100">Ahmad Rizal</p>
+<p class="text-xs text-slate-500">ahmad.rizal@corporation.my</p>
+</div>
+</div>
+</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-violet-100 text-violet-800 dark:bg-violet-900/30 dark:text-violet-300">Owner</span>
+</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-1.5">
+<div class="size-2 rounded-full bg-emerald-500"></div>
+<span class="text-sm text-slate-700 dark:text-slate-300">Active</span>
+</div>
+</td>
+<td class="px-6 py-4 text-sm text-slate-500">2 mins ago</td>
+<td class="px-6 py-4 text-right">
+<button class="text-primary text-xs font-bold hover:underline">Edit</button>
+<span class="mx-2 text-slate-300">|</span>
+<button class="text-rose-500 text-xs font-bold hover:underline">Remove</button>
+</td>
+</tr>
+<!-- Member 2 -->
+<tr>
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="size-10 rounded-full bg-slate-200 overflow-hidden">
+<img alt="Siti Norfazillah" data-alt="Portrait of Siti Norfazillah" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDsglGEvpr9XWc_78uIarb2I9i9Vbzju7nDf0sPr0m_T4PLoYqaIJMpSyyDmL26OVveFh99uBwriIdpfafQ6WvLPZdaZRI2Y1AmRe5l4btTy2xfrdIKlCuA0sWwzTC5Ny1wynWcAqesxEATii8HRatblT6eDpcYe543RZ-PMbW-BZcydGL5WDXONHd05jQDyMWtK1TVh-ZuLGRTsQs-89hGxfnWKhnWdyyt3gks5a2aSElYfS6jYUvWjZVMIHpglWoSJbv5B5HVs88"/>
+</div>
+<div>
+<p class="text-sm font-semibold text-slate-900 dark:text-slate-100">Siti Norfazillah</p>
+<p class="text-xs text-slate-500">siti.n@corporation.my</p>
+</div>
+</div>
+</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800 dark:bg-blue-900/30 dark:text-blue-300">Admin</span>
+</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-1.5">
+<div class="size-2 rounded-full bg-emerald-500"></div>
+<span class="text-sm text-slate-700 dark:text-slate-300">Active</span>
+</div>
+</td>
+<td class="px-6 py-4 text-sm text-slate-500">1 hour ago</td>
+<td class="px-6 py-4 text-right">
+<button class="text-primary text-xs font-bold hover:underline">Edit</button>
+<span class="mx-2 text-slate-300">|</span>
+<button class="text-rose-500 text-xs font-bold hover:underline">Remove</button>
+</td>
+</tr>
+<!-- Member 3 -->
+<tr>
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="size-10 rounded-full bg-slate-200 overflow-hidden">
+<img alt="Raj Kumar" data-alt="Portrait of Raj Kumar" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAShuV-cQQMPF6WxUia0B_SkNZYVl6-p0tCyBp7D6o_O1_CUHY0BWy3ib0Y5TsSC_Zq7ilqIYXxL7vWUEd2khLUUVLqPJMPmsVz-CcdClcP8A7NfC5eHEtmHJSj73UX6ls2Z5rrtEhQpl8nF_Rd-VMHOMZfMK5BQl662X2TlueGobh71VGzxQggrV4-bPdXHpnqggvX9MnxrlxigWb2UcLugyVkXXgTT8GJVMa8_Iv5CLDMmQlZ6vJ1mNbYZXDEE3Mpbrahgu3SbyI"/>
+</div>
+<div>
+<p class="text-sm font-semibold text-slate-900 dark:text-slate-100">Raj Kumar</p>
+<p class="text-xs text-slate-500">raj.kumar@corporation.my</p>
+</div>
+</div>
+</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-emerald-100 text-emerald-800 dark:bg-emerald-900/30 dark:text-emerald-300">Finance</span>
+</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-1.5">
+<div class="size-2 rounded-full bg-emerald-500"></div>
+<span class="text-sm text-slate-700 dark:text-slate-300">Active</span>
+</div>
+</td>
+<td class="px-6 py-4 text-sm text-slate-500">Yesterday</td>
+<td class="px-6 py-4 text-right">
+<button class="text-primary text-xs font-bold hover:underline">Edit</button>
+<span class="mx-2 text-slate-300">|</span>
+<button class="text-rose-500 text-xs font-bold hover:underline">Remove</button>
+</td>
+</tr>
+<!-- Member 4 -->
+<tr>
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="size-10 rounded-full bg-slate-200 overflow-hidden">
+<img alt="Lee Jia Yi" data-alt="Portrait of Lee Jia Yi" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA2j0e-D-mi3I3p7QCjPhUjNFQTSVp_BFTJBrEb_rKswcYAF5O7CX3_-NEImS-Ew6mTFkZpWAbQjYab53z-sgx9C6Va9L9X43ETOvvY81UXIUBPdoJIb17iyRJrPef9s7ob0NovY8gBontOqIRJCKhTOVmOm4MgBVoK010vrWy6L9X9HM1IFXN4nnbj7nTw5Z-dPvlnoMeVcMMVAD6wluX4JH44rj79yu_hMnmBai95PIo1VbCBUrLwAvemm8o1uGP87yGDzaNLDy0"/>
+</div>
+<div>
+<p class="text-sm font-semibold text-slate-900 dark:text-slate-100">Lee Jia Yi</p>
+<p class="text-xs text-slate-500">lee.jy@corporation.my</p>
+</div>
+</div>
+</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-slate-100 text-slate-800 dark:bg-slate-800 dark:text-slate-300">Viewer</span>
+</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-1.5">
+<div class="size-2 rounded-full bg-amber-500"></div>
+<span class="text-sm text-slate-700 dark:text-slate-300">Pending</span>
+</div>
+</td>
+<td class="px-6 py-4 text-sm text-slate-400">Never</td>
+<td class="px-6 py-4 text-right">
+<button class="text-primary text-xs font-bold hover:underline">Resend Invite</button>
+<span class="mx-2 text-slate-300">|</span>
+<button class="text-rose-500 text-xs font-bold hover:underline">Remove</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<!-- Role Descriptions Card -->
+<div class="bg-white dark:bg-slate-900 rounded-lg shadow-sm border border-slate-200 dark:border-slate-800 p-6">
+<h3 class="text-lg font-bold text-slate-900 dark:text-slate-100 mb-6 flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">info</span>
+                                Role Descriptions
+                            </h3>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<div class="flex gap-4">
+<div class="shrink-0 size-8 rounded bg-violet-100 dark:bg-violet-900/30 flex items-center justify-center">
+<span class="material-symbols-outlined text-violet-600 dark:text-violet-400 text-sm">stars</span>
+</div>
+<div>
+<h4 class="text-sm font-bold text-slate-900 dark:text-slate-100">Owner</h4>
+<p class="text-xs text-slate-500 mt-1 leading-relaxed">Full access to all features, billing management, and ability to delete the organization account.</p>
+</div>
+</div>
+<div class="flex gap-4">
+<div class="shrink-0 size-8 rounded bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center">
+<span class="material-symbols-outlined text-blue-600 dark:text-blue-400 text-sm">admin_panel_settings</span>
+</div>
+<div>
+<h4 class="text-sm font-bold text-slate-900 dark:text-slate-100">Admin</h4>
+<p class="text-xs text-slate-500 mt-1 leading-relaxed">Can manage team members, change company settings, and perform all invoice-related actions.</p>
+</div>
+</div>
+<div class="flex gap-4">
+<div class="shrink-0 size-8 rounded bg-emerald-100 dark:bg-emerald-900/30 flex items-center justify-center">
+<span class="material-symbols-outlined text-emerald-600 dark:text-emerald-400 text-sm">account_balance_wallet</span>
+</div>
+<div>
+<h4 class="text-sm font-bold text-slate-900 dark:text-slate-100">Finance</h4>
+<p class="text-xs text-slate-500 mt-1 leading-relaxed">Dedicated access to creating, sending invoices and tracking expenses. Restricted from team settings.</p>
+</div>
+</div>
+<div class="flex gap-4">
+<div class="shrink-0 size-8 rounded bg-slate-100 dark:bg-slate-800 flex items-center justify-center">
+<span class="material-symbols-outlined text-slate-600 dark:text-slate-400 text-sm">visibility</span>
+</div>
+<div>
+<h4 class="text-sm font-bold text-slate-900 dark:text-slate-100">Viewer</h4>
+<p class="text-xs text-slate-500 mt-1 leading-relaxed">Read-only access to invoices and reports. Ideal for external auditors or stakeholders.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+</div>
+</div>
+</main>
+</div>
+</body></html>

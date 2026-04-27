@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Invoiz Customer Detail Profile</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              colors: {
+                "primary": "#3c83f6",
+                "background-light": "#f5f7f8",
+                "background-dark": "#101722",
+              },
+              fontFamily: {
+                "display": ["Inter", "sans-serif"]
+              },
+              borderRadius: {"DEFAULT": "0.5rem", "lg": "1rem", "xl": "1.5rem", "full": "9999px"},
+            },
+          },
+        }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100">
+<div class="flex min-h-screen">
+<!-- Sidebar -->
+<aside class="w-60 bg-slate-900 text-slate-300 flex flex-col fixed h-full">
+<div class="p-6 flex items-center gap-3">
+<div class="size-8 bg-primary rounded-lg flex items-center justify-center text-white">
+<span class="material-symbols-outlined">receipt_long</span>
+</div>
+<h1 class="text-xl font-bold text-white tracking-tight">Invoiz</h1>
+</div>
+<nav class="flex-1 px-4 space-y-1">
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-slate-800 transition-colors" href="#">
+<span class="material-symbols-outlined text-xl">dashboard</span>
+<span class="text-sm font-medium">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-slate-800 transition-colors" href="#">
+<span class="material-symbols-outlined text-xl">description</span>
+<span class="text-sm font-medium">Invoices</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg bg-primary text-white" href="#">
+<span class="material-symbols-outlined text-xl">groups</span>
+<span class="text-sm font-medium">Customers</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-slate-800 transition-colors" href="#">
+<span class="material-symbols-outlined text-xl">payments</span>
+<span class="text-sm font-medium">Payments</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-slate-800 transition-colors" href="#">
+<span class="material-symbols-outlined text-xl">analytics</span>
+<span class="text-sm font-medium">Reports</span>
+</a>
+</nav>
+<div class="p-4 border-t border-slate-800 space-y-1">
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-slate-800 transition-colors" href="#">
+<span class="material-symbols-outlined text-xl">settings</span>
+<span class="text-sm font-medium">Settings</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-slate-800 transition-colors text-red-400" href="#">
+<span class="material-symbols-outlined text-xl">logout</span>
+<span class="text-sm font-medium">Logout</span>
+</a>
+</div>
+</aside>
+<!-- Main Content -->
+<main class="flex-1 ml-60">
+<!-- Header -->
+<header class="h-16 bg-white border-b border-slate-200 flex items-center justify-between px-8 sticky top-0 z-10">
+<nav class="flex items-center gap-2 text-sm">
+<a class="text-slate-500 hover:text-primary transition-colors" href="#">Customers</a>
+<span class="material-symbols-outlined text-xs text-slate-400">chevron_right</span>
+<span class="font-semibold text-slate-900">Ahmad Enterprise</span>
+</nav>
+<div class="flex items-center gap-4">
+<button class="p-2 text-slate-400 hover:text-primary transition-colors">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<div class="h-8 w-px bg-slate-200 mx-2"></div>
+<div class="flex items-center gap-3">
+<div class="text-right">
+<p class="text-sm font-semibold text-slate-900 leading-none">Syahmi Azman</p>
+<p class="text-xs text-slate-500">Finance Manager</p>
+</div>
+<div class="size-10 rounded-full bg-primary/10 flex items-center justify-center text-primary font-bold">SA</div>
+</div>
+</div>
+</header>
+<div class="p-8 space-y-6">
+<!-- Profile Section -->
+<div class="bg-white rounded-xl border border-slate-200 p-6 flex flex-col md:flex-row md:items-center justify-between gap-6">
+<div class="flex items-center gap-5">
+<div class="size-16 rounded-xl bg-primary flex items-center justify-center text-white text-2xl font-bold shadow-lg shadow-primary/20">
+                            AE
+                        </div>
+<div>
+<div class="flex items-center gap-3">
+<h2 class="text-2xl font-bold text-slate-900 leading-tight">Ahmad Enterprise Sdn Bhd</h2>
+<span class="px-2.5 py-0.5 bg-emerald-100 text-emerald-700 text-xs font-bold rounded-full uppercase tracking-wider">Active</span>
+</div>
+<p class="text-slate-500 font-medium">Owner: Ahmad Rizal</p>
+<div class="flex items-center gap-4 mt-2 text-sm text-slate-500">
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-base">mail</span> ahmad@enterprise.my</span>
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-base">call</span> +60 12-345 6789</span>
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-base text-red-500" data-location="Kuala Lumpur">location_on</span> Kuala Lumpur</span>
+</div>
+</div>
+</div>
+<div class="flex gap-3">
+<button class="px-4 py-2 bg-slate-100 text-slate-700 font-semibold rounded-lg hover:bg-slate-200 transition-colors flex items-center gap-2">
+<span class="material-symbols-outlined text-lg">edit</span>
+                            Edit Profile
+                        </button>
+<button class="px-4 py-2 bg-primary text-white font-semibold rounded-lg hover:bg-primary/90 transition-colors shadow-sm flex items-center gap-2">
+<span class="material-symbols-outlined text-lg">add</span>
+                            Create Invoice
+                        </button>
+</div>
+</div>
+<!-- Quick Stats Grid -->
+<div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+<div class="bg-white p-5 rounded-xl border border-slate-200">
+<p class="text-sm font-medium text-slate-500">Total Invoiced</p>
+<p class="text-2xl font-bold text-slate-900 mt-1">RM 45,200</p>
+</div>
+<div class="bg-white p-5 rounded-xl border border-slate-200">
+<p class="text-sm font-medium text-slate-500">Outstanding</p>
+<p class="text-2xl font-bold text-slate-900 mt-1">RM 3,200</p>
+</div>
+<div class="bg-white p-5 rounded-xl border border-slate-200">
+<p class="text-sm font-medium text-slate-500 text-red-500">Overdue</p>
+<p class="text-2xl font-bold text-slate-900 mt-1">RM 0</p>
+</div>
+<div class="bg-white p-5 rounded-xl border border-slate-200">
+<p class="text-sm font-medium text-slate-500">Last Invoice</p>
+<p class="text-2xl font-bold text-slate-900 mt-1">12 Oct 2023</p>
+</div>
+</div>
+<!-- Tabs & Content -->
+<div class="space-y-4">
+<div class="flex border-b border-slate-200">
+<button class="px-6 py-3 text-sm font-semibold border-b-2 border-primary text-primary">Invoices</button>
+<button class="px-6 py-3 text-sm font-medium text-slate-500 hover:text-slate-700 transition-colors">Payments</button>
+<button class="px-6 py-3 text-sm font-medium text-slate-500 hover:text-slate-700 transition-colors">Notes</button>
+<button class="px-6 py-3 text-sm font-medium text-slate-500 hover:text-slate-700 transition-colors">Activity</button>
+</div>
+<!-- Invoices Table -->
+<div class="bg-white rounded-xl border border-slate-200 overflow-hidden shadow-sm">
+<table class="w-full text-left">
+<thead class="bg-slate-50 border-b border-slate-200">
+<tr>
+<th class="px-6 py-4 text-xs font-bold text-slate-500 uppercase tracking-wider">Invoice #</th>
+<th class="px-6 py-4 text-xs font-bold text-slate-500 uppercase tracking-wider">Date</th>
+<th class="px-6 py-4 text-xs font-bold text-slate-500 uppercase tracking-wider">Amount</th>
+<th class="px-6 py-4 text-xs font-bold text-slate-500 uppercase tracking-wider">Status</th>
+<th class="px-6 py-4 text-xs font-bold text-slate-500 uppercase tracking-wider">LHDN Compliance</th>
+<th class="px-6 py-4 text-xs font-bold text-slate-500 uppercase tracking-wider">Actions</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-slate-200">
+<tr class="hover:bg-slate-50 transition-colors group">
+<td class="px-6 py-4 font-semibold text-slate-900">INV-2023-0045</td>
+<td class="px-6 py-4 text-sm text-slate-600">12 Oct 2023</td>
+<td class="px-6 py-4 text-sm font-bold text-slate-900">RM 1,200.00</td>
+<td class="px-6 py-4">
+<span class="px-2.5 py-1 bg-amber-100 text-amber-700 text-[11px] font-bold rounded-full uppercase">Sent</span>
+</td>
+<td class="px-6 py-4">
+<span class="px-2.5 py-1 bg-violet-100 text-violet-700 text-[11px] font-bold rounded-full uppercase flex items-center w-fit gap-1">
+<span class="material-symbols-outlined text-xs">verified</span>
+                                            Valid
+                                        </span>
+</td>
+<td class="px-6 py-4">
+<button class="text-slate-400 hover:text-primary"><span class="material-symbols-outlined">more_horiz</span></button>
+</td>
+</tr>
+<tr class="hover:bg-slate-50 transition-colors group">
+<td class="px-6 py-4 font-semibold text-slate-900">INV-2023-0038</td>
+<td class="px-6 py-4 text-sm text-slate-600">25 Sep 2023</td>
+<td class="px-6 py-4 text-sm font-bold text-slate-900">RM 4,500.00</td>
+<td class="px-6 py-4">
+<span class="px-2.5 py-1 bg-emerald-100 text-emerald-700 text-[11px] font-bold rounded-full uppercase">Paid</span>
+</td>
+<td class="px-6 py-4">
+<span class="px-2.5 py-1 bg-violet-100 text-violet-700 text-[11px] font-bold rounded-full uppercase flex items-center w-fit gap-1">
+<span class="material-symbols-outlined text-xs">verified</span>
+                                            Valid
+                                        </span>
+</td>
+<td class="px-6 py-4">
+<button class="text-slate-400 hover:text-primary"><span class="material-symbols-outlined">more_horiz</span></button>
+</td>
+</tr>
+<tr class="hover:bg-slate-50 transition-colors group">
+<td class="px-6 py-4 font-semibold text-slate-900">INV-2023-0021</td>
+<td class="px-6 py-4 text-sm text-slate-600">10 Aug 2023</td>
+<td class="px-6 py-4 text-sm font-bold text-slate-900">RM 12,000.00</td>
+<td class="px-6 py-4">
+<span class="px-2.5 py-1 bg-emerald-100 text-emerald-700 text-[11px] font-bold rounded-full uppercase">Paid</span>
+</td>
+<td class="px-6 py-4">
+<span class="px-2.5 py-1 bg-violet-100 text-violet-700 text-[11px] font-bold rounded-full uppercase flex items-center w-fit gap-1">
+<span class="material-symbols-outlined text-xs">verified</span>
+                                            Valid
+                                        </span>
+</td>
+<td class="px-6 py-4">
+<button class="text-slate-400 hover:text-primary"><span class="material-symbols-outlined">more_horiz</span></button>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="px-6 py-4 bg-slate-50 border-t border-slate-200 flex items-center justify-between">
+<p class="text-sm text-slate-500">Showing 3 of 42 invoices</p>
+<div class="flex gap-2">
+<button class="px-3 py-1 bg-white border border-slate-200 rounded text-sm text-slate-600 hover:bg-slate-50">Previous</button>
+<button class="px-3 py-1 bg-white border border-slate-200 rounded text-sm text-slate-600 hover:bg-slate-50">Next</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Footer Info Row -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6 pb-12">
+<div class="bg-white p-6 rounded-xl border border-slate-200">
+<h3 class="font-bold text-slate-900 mb-4 flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">corporate_fare</span>
+                            Business Details
+                        </h3>
+<div class="space-y-3">
+<div class="flex justify-between py-2 border-b border-slate-100">
+<span class="text-sm text-slate-500 font-medium">SSM Number</span>
+<span class="text-sm text-slate-900 font-bold">201201043210 (1029384-H)</span>
+</div>
+<div class="flex justify-between py-2 border-b border-slate-100">
+<span class="text-sm text-slate-500 font-medium">Tax Registration</span>
+<span class="text-sm text-slate-900 font-bold">MY1234567890</span>
+</div>
+<div class="flex justify-between py-2">
+<span class="text-sm text-slate-500 font-medium">Currency</span>
+<span class="text-sm text-slate-900 font-bold">Malaysian Ringgit (MYR)</span>
+</div>
+</div>
+</div>
+<div class="bg-white p-6 rounded-xl border border-slate-200">
+<h3 class="font-bold text-slate-900 mb-4 flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">location_on</span>
+                            Billing Address
+                        </h3>
+<p class="text-sm text-slate-600 leading-relaxed">
+                            No. 45-2, Jalan Telawi 3,<br/>
+                            Bangsar Baru,<br/>
+                            59100 Kuala Lumpur,<br/>
+                            Wilayah Persekutuan Kuala Lumpur
+                        </p>
+</div>
+</div>
+</div>
+</main>
+</div>
+</body></html>

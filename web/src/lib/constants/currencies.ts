@@ -1,0 +1,17 @@
+export const CURRENCIES = [
+  { value: 'MYR', label: 'MYR — Malaysian Ringgit' },
+  { value: 'USD', label: 'USD — US Dollar' },
+  { value: 'SGD', label: 'SGD — Singapore Dollar' },
+  { value: 'EUR', label: 'EUR — Euro' },
+  { value: 'GBP', label: 'GBP — British Pound' },
+  { value: 'AUD', label: 'AUD — Australian Dollar' },
+  { value: 'JPY', label: 'JPY — Japanese Yen' },
+  { value: 'CNY', label: 'CNY — Chinese Yuan' },
+  { value: 'THB', label: 'THB — Thai Baht' },
+  { value: 'IDR', label: 'IDR — Indonesian Rupiah' },
+  { value: 'PHP', label: 'PHP — Philippine Peso' },
+  { value: 'INR', label: 'INR — Indian Rupee' },
+  { value: 'HKD', label: 'HKD — Hong Kong Dollar' },
+  { value: 'TWD', label: 'TWD — Taiwan Dollar' },
+  { value: 'KRW', label: 'KRW — South Korean Won' },
+] as const;

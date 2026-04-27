@@ -1,0 +1,103 @@
+---
+const steps = [
+  {
+    num: '01',
+    title: 'Buat Invoice',
+    desc: 'Intuitive editor dengan smart auto-fill. Preview real-time sebelum send.',
+    mockup: {
+      label: 'New Invoice',
+      badge: 'Draft',
+      badgeColor: 'text-accent bg-accent/8',
+      content: [
+        { label: 'Customer', value: 'TechVentures Sdn Bhd' },
+        { label: 'Amount', value: 'RM 11,700.00' },
+      ],
+    },
+  },
+  {
+    num: '02',
+    title: 'Submit LHDN',
+    desc: 'One-click submission ke MyInvois. Auto-validate sebelum hantar.',
+    mockup: {
+      label: 'LHDN Submission',
+      badge: 'Live',
+      badgeColor: 'text-accent bg-accent/8',
+      content: [
+        { label: 'Status', value: 'Accepted by LHDN' },
+        { label: 'Time', value: 'Processed in 1.2s' },
+      ],
+    },
+  },
+  {
+    num: '03',
+    title: 'Collect Payment',
+    desc: 'Payment tracked automatically. Automated reminders keep cash flow healthy.',
+    mockup: {
+      label: 'Payment Received',
+      badge: 'Paid',
+      badgeColor: 'text-accent bg-accent/8',
+      content: [
+        { label: 'Amount', value: 'RM 11,700.00' },
+        { label: 'Method', value: 'FPX Transfer' },
+      ],
+    },
+  },
+];
+---
+<section id="how-it-works" class="py-32 lg:py-40 px-4 bg-white" aria-label="How it works">
+  <div class="max-w-6xl mx-auto">
+    <div class="text-center mb-16 lg:mb-20">
+      <h2 class="how-reveal font-display text-3xl sm:text-4xl lg:text-[52px] font-bold text-ink leading-tight tracking-[-0.03em]">
+        Tiga langkah je.
+      </h2>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-6 relative">
+      <!-- Connecting line (desktop only) -->
+      <div class="hidden lg:block absolute top-[42px] left-[16.66%] right-[16.66%] h-px bg-border" aria-hidden="true"></div>
+
+      {steps.map((step) => (
+        <div class="how-step text-center">
+          <div class="relative z-10 inline-block mb-6">
+            <span class="font-display text-6xl font-extrabold text-border">{step.num}</span>
+          </div>
+          <h3 class="font-display text-2xl font-bold text-ink mb-2">{step.title}</h3>
+          <p class="text-base text-ink-light leading-relaxed max-w-xs mx-auto">{step.desc}</p>
+
+          <div class="mt-8 perspective-1200">
+            <div class="bg-white rounded-xl border border-border shadow-sm p-4" style="transform: perspective(800px) rotateX(2deg) rotateY(0deg);">
+              <div class="flex items-center justify-between mb-3">
+                <span class="text-xs font-semibold text-ink">{step.mockup.label}</span>
+                <span class={`text-[10px] ${step.mockup.badgeColor} px-2 py-0.5 rounded font-medium`}>{step.mockup.badge}</span>
+              </div>
+              <div class="space-y-2">
+                {step.mockup.content.map((item) => (
+                  <div class="bg-surface rounded-lg px-3 py-2 border border-border">
+                    <div class="text-[9px] text-ink-muted mb-0.5">{item.label}</div>
+                    <div class="text-xs text-ink font-medium">{item.value}</div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<script>
+  import gsap from 'gsap';
+  import { ScrollTrigger } from 'gsap/ScrollTrigger';
+  gsap.registerPlugin(ScrollTrigger);
+
+  gsap.from('.how-reveal', {
+    opacity: 0, y: 25, stagger: 0.1, duration: 0.6, ease: 'power3.out',
+    scrollTrigger: { trigger: '.how-reveal', start: 'top 85%', once: true },
+  });
+
+  gsap.from('.how-step', {
+    opacity: 0, y: 30, stagger: 0.15, duration: 0.7, ease: 'power3.out',
+    scrollTrigger: { trigger: '.how-step', start: 'top 85%', once: true },
+  });
+</script>

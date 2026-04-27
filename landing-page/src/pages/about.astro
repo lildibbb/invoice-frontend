@@ -1,0 +1,154 @@
+---
+import { Icon } from 'astro-icon/components';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/layout/Header.astro';
+
+const stats = [
+  { value: '500+', label: 'Businesses' },
+  { value: '50,000+', label: 'Invoices processed' },
+  { value: '99.8%', label: 'Uptime' },
+];
+
+const values = [
+  {
+    icon: 'ph:rocket-launch-duotone',
+    title: 'Innovation',
+    description: 'We push boundaries to deliver the most intuitive invoicing experience for Malaysian businesses.',
+  },
+  {
+    icon: 'ph:shield-check-duotone',
+    title: 'Trust & Compliance',
+    description: 'Security and regulatory compliance are built into everything we do — not bolted on as an afterthought.',
+  },
+  {
+    icon: 'ph:handshake-duotone',
+    title: 'Customer First',
+    description: 'Every feature we build starts with a real problem faced by our customers. Your success is our success.',
+  },
+];
+
+const team = [
+  {
+    name: 'Adib Asyraaf',
+    title: 'Founder & CEO',
+    initials: 'AA',
+    bio: 'Passionate about simplifying financial operations for Malaysian SMEs through technology.',
+    gradient: 'from-brand-500 to-violet-500',
+  },
+  {
+    name: 'Sarah Lim',
+    title: 'CTO',
+    initials: 'SL',
+    bio: 'Full-stack engineer with a focus on scalable, secure multi-tenant architectures.',
+    gradient: 'from-emerald-400 to-teal-500',
+  },
+  {
+    name: 'Farhan Ibrahim',
+    title: 'Head of Product',
+    initials: 'FI',
+    bio: 'Product leader obsessed with user experience and solving real business pain points.',
+    gradient: 'from-amber-400 to-orange-500',
+  },
+  {
+    name: 'Mei Ling',
+    title: 'Head of Design',
+    initials: 'ML',
+    bio: 'Designer who believes great software should feel effortless and look beautiful.',
+    gradient: 'from-pink-400 to-rose-500',
+  },
+];
+---
+<BaseLayout title="About — Invoiz">
+  <Header />
+  <main>
+    <!-- Hero -->
+    <section class="bg-abyss pt-32 pb-20 px-4 text-center">
+      <div class="inline-flex items-center gap-2 border border-brand-500/30 bg-brand-500/10 text-brand-400 text-[13px] font-medium px-4 py-1.5 rounded-full mb-8">
+        <Icon name="ph:flag-duotone" class="w-4 h-4" />
+        Built in Malaysia
+      </div>
+      <h1 class="font-display text-4xl sm:text-5xl font-bold text-white">Simplifying invoicing for<br />Malaysian businesses</h1>
+      <p class="mt-4 text-lg text-slate-400 max-w-2xl mx-auto">We are on a mission to make LHDN-compliant e-invoicing effortless for every business in Malaysia.</p>
+    </section>
+
+    <!-- Mission -->
+    <section class="py-16 px-4 bg-white">
+      <div class="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
+        <div>
+          <h2 class="font-display text-3xl font-bold text-slate-900 mb-6">Our mission</h2>
+          <p class="text-slate-600 leading-relaxed mb-4">
+            Invoiz was founded with a simple belief: invoicing should not be a burden. Malaysian businesses — from sole proprietors to large enterprises — deserve a modern, reliable tool that handles compliance automatically so they can focus on growth.
+          </p>
+          <p class="text-slate-600 leading-relaxed">
+            We built Invoiz to bridge the gap between complex LHDN requirements and everyday business operations. Our platform handles everything from invoice creation and e-submission to audit trails and multi-tenant management, all in one place.
+          </p>
+        </div>
+        <div class="space-y-4">
+          {stats.map((stat) => (
+            <div class="bg-slate-50 rounded-xl p-6 text-center border border-slate-100">
+              <div class="font-display text-3xl font-bold text-brand-600">{stat.value}</div>
+              <div class="mt-1 text-sm text-slate-500">{stat.label}</div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Values -->
+    <section class="py-16 px-4 bg-slate-50">
+      <div class="max-w-5xl mx-auto">
+        <h2 class="font-display text-3xl font-bold text-slate-900 text-center mb-12">Our values</h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {values.map((value) => (
+            <div class="bg-white rounded-2xl border border-slate-100 p-8">
+              <div class="w-12 h-12 rounded-full bg-brand-50 flex items-center justify-center mb-5">
+                <Icon name={value.icon} class="w-7 h-7 text-brand-500" />
+              </div>
+              <h3 class="text-lg font-semibold text-slate-900">{value.title}</h3>
+              <p class="mt-2 text-sm text-slate-500 leading-relaxed">{value.description}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Team -->
+    <section class="py-16 px-4 bg-white">
+      <div class="max-w-5xl mx-auto">
+        <h2 class="font-display text-3xl font-bold text-slate-900 text-center mb-12">Meet the team</h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          {team.map((member) => (
+            <div class="text-center">
+              <div class={`w-20 h-20 rounded-full bg-gradient-to-br ${member.gradient} flex items-center justify-center mx-auto mb-4`}>
+                <span class="text-xl font-bold text-white">{member.initials}</span>
+              </div>
+              <h3 class="font-semibold text-slate-900">{member.name}</h3>
+              <p class="text-sm text-brand-600 font-medium">{member.title}</p>
+              <p class="mt-2 text-sm text-slate-500 leading-relaxed">{member.bio}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="py-20 px-4 bg-slate-50">
+      <div class="max-w-3xl mx-auto text-center">
+        <h2 class="font-display text-3xl font-bold text-slate-900">Join us on our mission</h2>
+        <p class="mt-4 text-lg text-slate-500">We are always looking for talented people who are passionate about building great software for Malaysian businesses.</p>
+        <div class="mt-6 flex flex-col sm:flex-row items-center justify-center gap-4">
+          <a href="#" class="bg-gradient-brand text-white px-8 py-4 rounded-xl font-semibold text-lg shadow-lg shadow-brand-500/25 hover:shadow-brand-500/40 transition-all">
+            View Open Positions
+          </a>
+          <a href="mailto:hello@invoiz.my" class="border-2 border-slate-200 text-slate-700 px-8 py-4 rounded-xl font-semibold text-lg hover:border-brand-500 hover:text-brand-600 transition-colors">
+            hello@invoiz.my
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="py-12 border-t border-gray-100 text-center text-gray-400 text-sm bg-white">
+    <p>&copy; 2026 Invoiz &middot; All rights reserved &middot; <a href="#" class="hover:text-blue-600 transition-colors">Privacy Policy</a> &middot; <a href="#" class="hover:text-blue-600 transition-colors">Terms</a></p>
+  </footer>
+</BaseLayout>
